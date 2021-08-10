@@ -1,0 +1,44 @@
+{
+    "env": {
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base",
+        "eslint:recommended",
+        "plugin:node/recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2020
+    },
+    "rules": {
+        "quotes": [
+            "warn",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
+        "no-unused-vars": "warn",
+        "linebreak-style": [
+            "warn",
+            "windows"
+        ],
+        "consistent-return": "off",
+        "global-require": "warn",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "node/no-unpublished-require": [
+            "error",
+            {
+                "allowModules": [
+                    "morgan"
+                ]
+            }
+        ]
+    }
+}

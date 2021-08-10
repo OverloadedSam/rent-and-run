@@ -1,0 +1,7 @@
+*default.json
+*development.json
+*production.json
+*custom-environment-variable.json
+*.env
+node_modules/
+*log
