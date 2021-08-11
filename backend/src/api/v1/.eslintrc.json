@@ -24,6 +24,14 @@
             "warn",
             "windows"
         ],
+        "operator-linebreak": [
+            "error",
+            "after"
+        ],
+        "comma-dangle": [
+            "error",
+            "only-multiline"
+        ],
         "consistent-return": "off",
         "global-require": "warn",
         "import/no-extraneous-dependencies": [
