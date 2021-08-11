@@ -3,6 +3,7 @@ const { ErrorResponse } = require('../utils');
 // eslint-disable-next-line no-unused-vars
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
+  error.message = err.message;
 
   if (error.errno === 1064 && error.code === 'ER_PARSE_ERROR') {
     const message = 'Internal server error';
