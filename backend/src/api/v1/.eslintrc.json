@@ -32,6 +32,9 @@
             "error",
             "only-multiline"
         ],
+        "newline-per-chained-call": [
+            "off"
+        ],
         "consistent-return": "off",
         "global-require": "warn",
         "import/no-extraneous-dependencies": [
