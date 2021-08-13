@@ -1,6 +1,7 @@
 const express = require('express');
 const config = require('config');
 const morgan = require('morgan');
+const routes = require('./routes');
 const { errorHandler } = require('./middlewares');
 
 const server = express();
@@ -8,6 +9,13 @@ const server = express();
 if (server.get('env') !== 'production') {
   server.use(morgan('tiny'));
 }
+
+server.use(express.json({ extended: true }));
+
+const apiUrl = config.get('API_URL');
+
+// Routes
+server.use(apiUrl, routes.userRoutes);
 
 // Custom error handler
 server.use(errorHandler);
