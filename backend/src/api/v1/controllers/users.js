@@ -1,5 +1,7 @@
 const { asyncHandler } = require('../middlewares');
 const { User } = require('../models');
+const { validateUserData } =
+  require('../validations').user;
 
 // @route   GET /api/v1/me
 // @access  Protected
@@ -34,7 +36,42 @@ const getUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @route   POST /api/v1/register/
+// @access  Public
+// @desc    Register user in DB.
+const registerUser = asyncHandler(async (req, res) => {
+  const userData = { ...req.body };
+
+  // Validate user data to store it in DB.
+  const { error } = validateUserData(userData);
+
+  if (error) {
+    const [validationError] = error.details;
+
+    return res.status(422).json({
+      success: false,
+      status: 422,
+      message: validationError.message,
+      key: validationError.context.key,
+    });
+  }
+
+  const user = new User(userData);
+  await user.addUser();
+
+  const token = user.generateAuthToken();
+  delete userData.password;
+
+  return res.status(201).header('x-auth-token', token).json({
+    success: true,
+    status: 201,
+    data: userData,
+    token,
+  });
+});
+
 module.exports = {
   getMyAccount,
   getUser,
+  registerUser,
 };
