@@ -1,5 +1,6 @@
 const { asyncHandler } = require('../middlewares');
 const { User } = require('../models');
+const { ErrorResponse } = require('../utils');
 const { validateUserData, validateUserUpdateData } =
   require('../validations').user;
 
@@ -104,9 +105,47 @@ const updateUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @route   POST /api/v1/login
+// @access  Public
+// @desc    Log in the user by sending back auth-token.
+const loginUser = asyncHandler(async (req, res, next) => {
+  const { email, password } = { ...req.body };
+
+  if (!email || !password) {
+    return next(
+      new ErrorResponse(400, 'Please provide both email and password!')
+    );
+  }
+
+  const [result] = await User.getUserByEmail(email);
+  const userFound = result[0] ? result[0] : null;
+
+  if (!userFound) {
+    return next(new ErrorResponse(404, 'You are not registered'));
+  }
+
+  const user = new User(userFound);
+
+  if (!(await user.matchPassword(password))) {
+    return next(new ErrorResponse(401, 'Please enter correct password!'));
+  }
+
+  const token = user.generateAuthToken();
+  delete userFound.password;
+  delete userFound.role;
+
+  res.status(200).header('x-auth-token', token).json({
+    success: true,
+    status: 200,
+    data: userFound,
+    token,
+  });
+});
+
 module.exports = {
   getMyAccount,
   getUser,
   registerUser,
   updateUser,
+  loginUser,
 };
