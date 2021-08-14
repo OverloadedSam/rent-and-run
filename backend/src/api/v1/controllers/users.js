@@ -1,6 +1,6 @@
 const { asyncHandler } = require('../middlewares');
 const { User } = require('../models');
-const { validateUserData } =
+const { validateUserData, validateUserUpdateData } =
   require('../validations').user;
 
 // @route   GET /api/v1/me
@@ -70,8 +70,43 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 });
 
+// @route   PUT /api/v1/me/
+// @access  Public
+// @desc    Register user in DB.
+const updateUser = asyncHandler(async (req, res) => {
+  const userData = { ...req.body };
+
+  // Validate user data to be updated.
+  const { error } = validateUserUpdateData(userData);
+
+  if (error) {
+    const [validationError] = error.details;
+
+    return res.status(422).json({
+      success: false,
+      status: 422,
+      message: validationError.message,
+      key: validationError.context.key,
+    });
+  }
+
+  userData.id = req.user.id;
+  const user = new User(userData);
+  await user.updateUser();
+
+  if (userData.password) delete userData.password;
+
+  return res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Account information has been updated successfully',
+    data: userData,
+  });
+});
+
 module.exports = {
   getMyAccount,
   getUser,
   registerUser,
+  updateUser,
 };
