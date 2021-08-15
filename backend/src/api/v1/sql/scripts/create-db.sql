@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`users` (
 CREATE TABLE IF NOT EXISTS `rent_and_run`.`coupons` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `coupon_code` VARCHAR(16) NOT NULL,
-  `discount_amout` DECIMAL(4, 2) NOT NULL,
+  `discount_amount` DECIMAL(5, 2) NOT NULL,
   `valid_till` DATE NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
