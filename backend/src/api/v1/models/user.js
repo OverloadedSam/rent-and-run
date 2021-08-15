@@ -1,5 +1,5 @@
 const config = require('config');
-const { v4: generateUuid } = require('uuid').v4;
+const { v4: generateUuid } = require('uuid');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { db } = require('../config');
