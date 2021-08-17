@@ -18,6 +18,27 @@ const getRoles = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   POST /api/v1/createRole
+// @access  Admin
+// @desc    Create roles for users.
+const createRole = asyncHandler(async (req, res, next) => {
+  const roleData = { ...req.body };
+
+  if (!roleData.description) {
+    return next(new ErrorResponse(400, 'Role description is not found!'));
+  }
+
+  const role = new Role(roleData);
+  const [result] = await role.addRole();
+
+  res.status(201).json({
+    success: true,
+    status: 201,
+    data: { ...roleData, id: result.insertId },
+  });
+});
+
 module.exports = {
   getRoles,
+  createRole,
 };
