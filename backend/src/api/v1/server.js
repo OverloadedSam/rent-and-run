@@ -16,6 +16,7 @@ const apiUrl = config.get('API_URL');
 
 // Routes
 server.use(apiUrl, routes.userRoutes);
+server.use(apiUrl, routes.roleRoutes);
 
 // Custom error handler
 server.use(errorHandler);
