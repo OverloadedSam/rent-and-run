@@ -38,7 +38,35 @@ const createRole = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   PUT /api/v1/updateRole
+// @access  Admin
+// @desc    Update roles that are already created.
+const updateRole = asyncHandler(async (req, res, next) => {
+  const roleData = { ...req.body };
+
+  if (!roleData.id || !roleData.description) {
+    return next(new ErrorResponse(400, 'Role id or description is not found!'));
+  }
+
+  const role = new Role(roleData);
+
+  const [result] = await role.updateRole();
+  if (!result.changedRows) {
+    return next(
+      new ErrorResponse(404, 'Can not update role! Role id not found.')
+    );
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Role description updated successfully!',
+    data: roleData,
+  });
+});
+
 module.exports = {
   getRoles,
   createRole,
+  updateRole,
 };
