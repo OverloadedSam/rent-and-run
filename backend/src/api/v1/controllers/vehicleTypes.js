@@ -38,7 +38,35 @@ const createVehicleType = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   PUT /api/v1/updateVehicleType
+// @access  Admin
+// @desc    Update vehicle types.
+const updateVehicleType = asyncHandler(async (req, res, next) => {
+  const vehicleTypeData = { ...req.body };
+
+  if (!vehicleTypeData.id || !vehicleTypeData.name) {
+    const message = 'Vehicle type id or name is not found!';
+    return next(new ErrorResponse(400, message));
+  }
+
+  const vehicleType = new VehicleType(vehicleTypeData);
+
+  const [result] = await vehicleType.updateVehicleType();
+  if (!result.changedRows) {
+    const message = 'Can not update vehicle type! vehicle type id not found.';
+    return next(new ErrorResponse(404, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Veicle type updated successfully!',
+    data: vehicleTypeData,
+  });
+});
+
 module.exports = {
   getVehicleTypes,
   createVehicleType,
+  updateVehicleType,
 };
