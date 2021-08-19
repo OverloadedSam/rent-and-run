@@ -38,7 +38,35 @@ const createFuelType = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   PUT /api/v1/updateFuelType
+// @access  Admin
+// @desc    Update fuel types.
+const updateFuelType = asyncHandler(async (req, res, next) => {
+  const fuelTypeData = { ...req.body };
+
+  if (!fuelTypeData.id || !fuelTypeData.name) {
+    const message = 'Fuel type id or name is not found!';
+    return next(new ErrorResponse(400, message));
+  }
+
+  const fuelType = new FuelType(fuelTypeData);
+
+  const [result] = await fuelType.updateFuelType();
+  if (!result.changedRows) {
+    const message = 'Can not update fuel type! Fuel type id not found.';
+    return next(new ErrorResponse(404, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Fuel type updated successfully!',
+    data: fuelTypeData,
+  });
+});
+
 module.exports = {
   getFuelTypes,
   createFuelType,
+  updateFuelType,
 };
