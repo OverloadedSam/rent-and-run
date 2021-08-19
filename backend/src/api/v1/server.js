@@ -19,6 +19,7 @@ server.use(apiUrl, routes.userRoutes);
 server.use(apiUrl, routes.roleRoutes);
 server.use(apiUrl, routes.vehicleTypeRoutes);
 server.use(apiUrl, routes.fuelTypeRoutes);
+server.use(apiUrl, routes.paymentMethodRoutes);
 
 // Custom error handler
 server.use(errorHandler);
