@@ -15,7 +15,7 @@ class PaymentMethod {
   }
 
   // Update name of payment method.
-  async updateFuelType() {
+  async updatePaymentMethod() {
     const query = `
       UPDATE payment_methods
       SET name = ?
@@ -25,7 +25,7 @@ class PaymentMethod {
   }
 
   // Get all payment methods.
-  static async getFuelTypes() {
+  static async getPaymentMethods() {
     const query = `SELECT * FROM payment_methods;`;
 
     return db.execute(query);
