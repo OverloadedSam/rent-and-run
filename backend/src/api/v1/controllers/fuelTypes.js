@@ -18,6 +18,27 @@ const getFuelTypes = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   POST /api/v1/createFuelType
+// @access  Admin
+// @desc    Create fuel types for vehicles.
+const createFuelType = asyncHandler(async (req, res, next) => {
+  const fuelTypeData = { ...req.body };
+
+  if (!fuelTypeData.name) {
+    return next(new ErrorResponse(400, 'Fuel type name is not found!'));
+  }
+
+  const fuelType = new FuelType(fuelTypeData);
+  const [result] = await fuelType.addFuelType();
+
+  res.status(201).json({
+    success: true,
+    status: 201,
+    data: { ...fuelTypeData, id: result.insertId },
+  });
+});
+
 module.exports = {
   getFuelTypes,
+  createFuelType,
 };
