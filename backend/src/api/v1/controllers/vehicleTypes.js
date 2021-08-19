@@ -60,7 +60,7 @@ const updateVehicleType = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     status: 200,
-    message: 'Veicle type updated successfully!',
+    message: 'Vehicle type updated successfully!',
     data: vehicleTypeData,
   });
 });
