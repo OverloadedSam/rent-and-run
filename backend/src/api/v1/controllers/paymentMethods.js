@@ -38,7 +38,36 @@ const createPaymentMethod = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   PUT /api/v1/updatePaymentMethod
+// @access  Admin
+// @desc    Update payment method.
+const updatePaymentMethod = asyncHandler(async (req, res, next) => {
+  const paymentMethodData = { ...req.body };
+
+  if (!paymentMethodData.id || !paymentMethodData.name) {
+    const message = 'Payment method id or name is not found!';
+    return next(new ErrorResponse(400, message));
+  }
+
+  const paymentType = new PaymentMethod(paymentMethodData);
+
+  const [result] = await paymentType.updatePaymentMethod();
+  if (!result.changedRows) {
+    const message =
+      'Can not update payment method! Payment method id not found.';
+    return next(new ErrorResponse(404, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Payment method updated successfully!',
+    data: paymentMethodData,
+  });
+});
+
 module.exports = {
   getPaymentMethods,
   createPaymentMethod,
+  updatePaymentMethod,
 };
