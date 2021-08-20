@@ -3,6 +3,7 @@ const roles = require('./roles');
 const vehicleTypes = require('./vehicleTypes');
 const fuelTypes = require('./fuelTypes');
 const paymentMethods = require('./paymentMethods');
+const paymentStatuses = require('./paymentStatuses');
 
 module.exports = {
   users,
@@ -10,4 +11,5 @@ module.exports = {
   vehicleTypes,
   fuelTypes,
   paymentMethods,
+  paymentStatuses,
 };
