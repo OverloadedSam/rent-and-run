@@ -4,6 +4,7 @@ const vehicleTypeRoutes = require('./vehicleTypes');
 const fuelTypeRoutes = require('./fuelTypes');
 const paymentMethodRoutes = require('./paymentMethods');
 const paymentStatusRoutes = require('./paymentStatuses');
+const couponRoutes = require('./coupons');
 
 module.exports = {
   userRoutes,
@@ -12,4 +13,5 @@ module.exports = {
   fuelTypeRoutes,
   paymentMethodRoutes,
   paymentStatusRoutes,
+  couponRoutes,
 };
