@@ -20,10 +20,10 @@ const getMyAccount = asyncHandler(async (req, res) => {
 });
 
 // @route   GET /api/v1/user/:id
-// @access  Protected/Admin
+// @access  Admin
 // @desc    Get the user by specifying id.
 const getUser = asyncHandler(async (req, res) => {
-  const [result] = await User.getUserById(req.params.id);
+  const [result] = await User.getUserById(req.params.user_id);
   const user = result[0] ? result[0] : null;
   if (user) delete user.password;
 
