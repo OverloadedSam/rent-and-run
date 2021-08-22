@@ -20,11 +20,12 @@ class User {
   }
 
   // Update user in the DB.
-  async updateUser() {
+  async updateUser(userId) {
     const query = `
       UPDATE users SET ?
       WHERE id = ?;`;
 
+    this.user.id = userId;
     if (this.user.password) {
       this.user.password = await this.generateHashedPassword();
     }

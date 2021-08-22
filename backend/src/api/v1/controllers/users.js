@@ -72,10 +72,11 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 // @route   PUT /api/v1/me/
-// @access  Public
+// @access  Protected
 // @desc    Register user in DB.
 const updateUser = asyncHandler(async (req, res) => {
   const userData = { ...req.body };
+  const userId = req.user.id;
 
   // Validate user data to be updated.
   const { error } = validateUserUpdateData(userData);
@@ -91,9 +92,8 @@ const updateUser = asyncHandler(async (req, res) => {
     });
   }
 
-  userData.id = req.user.id;
   const user = new User(userData);
-  await user.updateUser();
+  await user.updateUser(userId);
 
   if (userData.password) delete userData.password;
 
