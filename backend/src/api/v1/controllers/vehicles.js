@@ -1,7 +1,8 @@
 const { asyncHandler } = require('../middlewares');
 const { Vehicle } = require('../models');
 const { ErrorResponse } = require('../utils');
-const { validateVehicleData } = require('../validations').vehicle;
+const { validateVehicleData, validateVehicleUpdateData } =
+  require('../validations').vehicle;
 
 // @route   GET /api/v1/vehicles
 // @access  Public
@@ -69,8 +70,49 @@ const createVehicle = asyncHandler(async (req, res) => {
   });
 });
 
+// @route   PUT /api/v1/vehicle/:vehicle_id
+// @access  Admin
+// @desc    Update vehicle data.
+const updateVehicle = asyncHandler(async (req, res, next) => {
+  const vehicleData = { ...req.body };
+  const vehicleId = req.params.vehicle_id;
+
+  const isDataEmpty = !Object.keys(vehicleData).length;
+  const { error } = validateVehicleUpdateData(vehicleData);
+
+  if (isDataEmpty) {
+    return next(new ErrorResponse(422, 'Please provide data to be updated'));
+  }
+  if (error) {
+    const [validationError] = error.details;
+
+    return res.status(422).json({
+      success: false,
+      status: 422,
+      message: validationError.message,
+      key: validationError.context.key,
+    });
+  }
+
+  const vehicle = new Vehicle(vehicleData);
+  const [result] = await vehicle.updateVehicle(vehicleId);
+
+  if (!result.affectedRows) {
+    const message = 'Can not update coupon! Coupon id not found.';
+    return next(new ErrorResponse(404, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Vehicle data updated successfully',
+    data: { ...vehicle.vehicle },
+  });
+});
+
 module.exports = {
   getVehicles,
   getVehicleWithDetails,
   createVehicle,
+  updateVehicle,
 };
