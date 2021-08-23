@@ -4,6 +4,7 @@ const {
   getVehicles,
   getVehicleWithDetails,
   createVehicle,
+  updateVehicle,
 } = require('../controllers').vehicles;
 
 router
@@ -11,6 +12,7 @@ router
   .post('/createVehicle', protect, admin, createVehicle);
 router
   .route('/vehicle/:vehicle_id')
-  .get(verifyId('vehicle_id'), getVehicleWithDetails);
+  .get(verifyId('vehicle_id'), getVehicleWithDetails)
+  .put(verifyId('vehicle_id'), protect, admin, updateVehicle);
 
 module.exports = router;
