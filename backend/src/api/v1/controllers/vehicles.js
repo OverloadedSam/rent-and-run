@@ -18,6 +18,26 @@ const getVehicles = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   GET /api/v1/vehicle/:vehicle_id
+// @access  Public
+// @desc    Get full detail of a vehicle by specifying id.
+const getVehicleWithDetails = asyncHandler(async (req, res, next) => {
+  const vehicleId = req.params.vehicle_id;
+  const [vehicleData] = await Vehicle.getVehicleDetails(vehicleId);
+
+  if (vehicleData[0].length === 0) {
+    const message = `Vehicle not found with given id "${vehicleId}"`;
+    return next(new ErrorResponse(404, message));
+  }
+
+  return res.status(200).json({
+    success: true,
+    status: 200,
+    data: vehicleData[0][0],
+  });
+});
+
 module.exports = {
   getVehicles,
+  getVehicleWithDetails,
 };
