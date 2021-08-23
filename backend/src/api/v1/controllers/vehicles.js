@@ -1,6 +1,7 @@
 const { asyncHandler } = require('../middlewares');
 const { Vehicle } = require('../models');
 const { ErrorResponse } = require('../utils');
+const { validateVehicleData } = require('../validations').vehicle;
 
 // @route   GET /api/v1/vehicles
 // @access  Public
@@ -37,7 +38,39 @@ const getVehicleWithDetails = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   POST /api/v1/createVehicle
+// @access  Admin
+// @desc    Create a new vehicle.
+const createVehicle = asyncHandler(async (req, res) => {
+  const vehicleData = { ...req.body };
+
+  const { error } = validateVehicleData(vehicleData);
+
+  if (error) {
+    const [validationError] = error.details;
+
+    return res.status(422).json({
+      success: false,
+      status: 422,
+      message: validationError.message,
+      key: validationError.context.key,
+    });
+  }
+
+  const vehicle = new Vehicle(vehicleData);
+
+  await vehicle.addVehicle();
+
+  res.status(201).json({
+    success: true,
+    status: 201,
+    message: 'Vehicle added successfully',
+    data: { ...vehicle.vehicle },
+  });
+});
+
 module.exports = {
   getVehicles,
   getVehicleWithDetails,
+  createVehicle,
 };
