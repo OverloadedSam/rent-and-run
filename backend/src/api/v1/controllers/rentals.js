@@ -18,6 +18,24 @@ const getRentals = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   GET /api/v1/myRentals
+// @access  Protected
+// @desc    Get all rentals of logged in user.
+const getUserRentals = asyncHandler(async (req, res, next) => {
+  const [rentalData] = await Rental.getRentalsByUser(req.user.id);
+  if (rentalData[0].length === 0) {
+    const message = `No rentals found for the user ${req.user.id}`;
+    return next(new ErrorResponse(404, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    data: rentalData[0],
+  });
+});
+
 module.exports = {
   getRentals,
+  getUserRentals,
 };
