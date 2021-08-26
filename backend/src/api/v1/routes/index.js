@@ -1,5 +1,6 @@
 const userRoutes = require('./users');
 const vehicleRoutes = require('./vehicles');
+const rentalRoutes = require('./rentals');
 const roleRoutes = require('./roles');
 const vehicleTypeRoutes = require('./vehicleTypes');
 const fuelTypeRoutes = require('./fuelTypes');
@@ -10,6 +11,7 @@ const couponRoutes = require('./coupons');
 module.exports = {
   userRoutes,
   vehicleRoutes,
+  rentalRoutes,
   roleRoutes,
   vehicleTypeRoutes,
   fuelTypeRoutes,
