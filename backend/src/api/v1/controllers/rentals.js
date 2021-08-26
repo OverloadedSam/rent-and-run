@@ -35,7 +35,34 @@ const getUserRentals = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   GET /api/v1/rental/:rental_id
+// @access  Protected/Admin
+// @desc    Get a rental with full details.
+const getRentalById = asyncHandler(async (req, res, next) => {
+  const rentalId = req.params.rental_id;
+  const { role, id: userId } = req.user;
+
+  const [rentalData] = await Rental.getRentalById(rentalId);
+  if (rentalData[0].length === 0) {
+    const message = `Rental not found for the id ${rentalId}`;
+    return next(new ErrorResponse(404, message));
+  }
+
+  // Return if the rental doesn't belong to the user or the user is not an admin.
+  if (!(rentalData[0][0].user === userId) && role !== 2) {
+    const message = 'You do not have authority to see this information!';
+    return next(new ErrorResponse(401, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    data: rentalData[0][0],
+  });
+});
+
 module.exports = {
   getRentals,
   getUserRentals,
+  getRentalById,
 };
