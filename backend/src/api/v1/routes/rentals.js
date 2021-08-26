@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { protect } = require('../middlewares');
-const { getRentals } = require('../controllers').rentals;
+const { getRentals, getUserRentals } = require('../controllers').rentals;
 
-router.get('/rentals', protect, getRentals);
+router
+  .get('/rentals', protect, getRentals)
+  .get('/myRentals', protect, getUserRentals);
 
 module.exports = router;
