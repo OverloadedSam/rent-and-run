@@ -17,6 +17,7 @@ const apiUrl = config.get('API_URL');
 // Routes
 server.use(apiUrl, routes.userRoutes);
 server.use(apiUrl, routes.vehicleRoutes);
+server.use(apiUrl, routes.rentalRoutes);
 server.use(apiUrl, routes.roleRoutes);
 server.use(apiUrl, routes.vehicleTypeRoutes);
 server.use(apiUrl, routes.fuelTypeRoutes);
