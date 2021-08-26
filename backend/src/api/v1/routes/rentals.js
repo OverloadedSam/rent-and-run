@@ -1,9 +1,14 @@
 const router = require('express').Router();
-const { protect } = require('../middlewares');
-const { getRentals, getUserRentals } = require('../controllers').rentals;
+const { protect, verifyId } = require('../middlewares');
+const {
+  getRentals,
+  getUserRentals,
+  getRentalById
+} = require('../controllers').rentals;
 
 router
   .get('/rentals', protect, getRentals)
-  .get('/myRentals', protect, getUserRentals);
+  .get('/myRentals', protect, getUserRentals)
+  .get('/rental/:rental_id', verifyId('rental_id'), protect, getRentalById);
 
 module.exports = router;
