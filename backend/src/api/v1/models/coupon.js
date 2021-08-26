@@ -28,6 +28,16 @@ class Coupon {
 
     return db.execute(query);
   }
+
+  // Find coupon by code.
+  static async getCouponByCode(code) {
+    const query = `
+      SELECT *
+      FROM coupons
+      WHERE coupon_code = ?`;
+
+    return db.execute(query, [code]);
+  }
 }
 
 module.exports = Coupon;
