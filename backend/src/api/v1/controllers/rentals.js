@@ -121,9 +121,49 @@ const createRental = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   POST /api/v1/applyCoupon/:rental_id
+// @access  Protected
+// @desc    Apply/update coupon for a rental.
+const applyCoupon = asyncHandler(async (req, res, next) => {
+  const rentalData = { ...req.body };
+  const couponCode = rentalData.coupon || null;
+  const user = req.user.id;
+  rentalData.id = req.params.rental_id;
+
+  const [couponData] = await Coupon.getCouponByCode(couponCode);
+  // When no coupon exists with given coupon code.
+  if (couponData.length === 0 && couponCode) {
+    return next(new ErrorResponse(400, 'Invalid coupon!'));
+  }
+  // When coupon has expired.
+  if (
+    couponData.length !== 0 &&
+    couponData[0].valid_till < new Date() &&
+    couponCode
+  ) {
+    return next(new ErrorResponse(400, 'Invalid coupon!'));
+  }
+
+  const couponId = couponData.length !== 0 ? couponData[0].id : null;
+  const rental = new Rental(rentalData);
+  const [rentalResult] = await rental.applyCoupon(couponId, user);
+
+  if (rentalResult.affectedRows === 0) {
+    const message = `Can't apply coupon. The rental doesn't exists or you may not have authority.`;
+    return next(new ErrorResponse(400, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Coupon has updated successfully!',
+  });
+});
+
 module.exports = {
   getRentals,
   getUserRentals,
   getRentalById,
   createRental,
+  applyCoupon,
 };
