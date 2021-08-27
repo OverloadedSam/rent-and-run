@@ -160,10 +160,31 @@ const applyCoupon = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   DELETE /api/v1/removeRental/:rental_id
+// @access  Protected
+// @desc    Delete a rental which is unpaid.
+const removeRental = asyncHandler(async (req, res, next) => {
+  const rentalId = req.params.rental_id;
+  const user = req.user.id;
+
+  const [rentalData] = await Rental.deleteRental(rentalId, user);
+
+  if (rentalData.affectedRows === 0) {
+    return next(400, 'Can not delete this rental!');
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    message: 'Rental has been deleted successfully',
+  });
+});
+
 module.exports = {
   getRentals,
   getUserRentals,
   getRentalById,
   createRental,
   applyCoupon,
+  removeRental,
 };
