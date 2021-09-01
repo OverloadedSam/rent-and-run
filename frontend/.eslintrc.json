@@ -41,6 +41,8 @@
         ],
         "newline-per-chained-call": [
             "off"
-        ]
+        ],
+        "react/function-component-definition": "off",
+        "react/prop-types": "off"
     }
 }
