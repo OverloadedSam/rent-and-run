@@ -43,6 +43,14 @@
             "off"
         ],
         "react/function-component-definition": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "prefer-const": "off",
+        "object-curly-newline": [
+            "error",
+            {
+                "multiline": true
+            }
+        ],
+        "react/button-has-type": "off"
     }
 }
