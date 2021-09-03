@@ -1,3 +1,4 @@
 import Badge from './Badge';
+import Button from './Button';
 
-export default Badge;
+export { Badge, Button };
