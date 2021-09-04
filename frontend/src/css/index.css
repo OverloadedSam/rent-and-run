@@ -99,6 +99,17 @@ p {
   }
 }
 
+/* Lists */
+.list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list--inline .list__item {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
 /* Buttons */
 .btn {
   border-radius: 40px;
