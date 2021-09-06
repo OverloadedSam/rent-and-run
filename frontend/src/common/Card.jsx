@@ -4,14 +4,20 @@ const Card = ({ ...props }) => {
   let { variant, children } = props;
   variant = variant && `card--${variant}`;
 
-  return <div className={`card ${variant}`}>{children}</div>;
+  return (
+    <div className={`card ${variant} ${props.className || ''}`}>{children}</div>
+  );
 };
 
-const CardHeader = ({ children }) => (
-  <header className='card__header'>{children}</header>
+const CardHeader = ({ ...props }) => (
+  <header className={`card__header ${props.className || ''}`}>
+    {props.children}
+  </header>
 );
 
-const CardBody = ({ children }) => <div className='card__body'>{children}</div>;
+const CardBody = ({ ...props }) => (
+  <div className={`card__body ${props.className || ''}`}>{props.children}</div>
+);
 
 Card.Body = CardBody;
 Card.Header = CardHeader;
