@@ -26,6 +26,7 @@
                 "allowTemplateLiterals": true
             }
         ],
+        "camelcase": "off",
         "jsx-quotes": [
             "warn",
             "prefer-single"
@@ -53,6 +54,7 @@
         ],
         "react/button-has-type": "off",
         "jsx-a11y/no-noninteractive-element-interactions": "off",
-        "jsx-a11y/click-events-have-key-events": "off"
+        "jsx-a11y/click-events-have-key-events": "off",
+        "react/jsx-one-expression-per-line": "off"
     }
 }
