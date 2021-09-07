@@ -1,3 +1,4 @@
 import NavBar from './NavBar';
+import ProductCard from './ProductCard';
 
-export default NavBar;
+export { NavBar, ProductCard };
