@@ -26,6 +26,10 @@
                 "allowTemplateLiterals": true
             }
         ],
+        "operator-linebreak": [
+            "error",
+            "after"
+        ],
         "camelcase": "off",
         "jsx-quotes": [
             "warn",
