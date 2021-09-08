@@ -273,6 +273,39 @@ p {
   }
 }
 
+/* Collapsibles */
+.collapsible__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapsible__heading {
+  margin-top: 0;
+  font-size: 3rem;
+}
+
+.collapsible__toggler {
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.collapsible__content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.collapsible--expanded .collapsible__content {
+  max-height: 100%;
+  opacity: 1;
+}
+
+.collapsible--expanded .collapsible__toggler {
+  transform: rotate(0deg);
+}
+
 /* Blocks */
 .block {
   padding: 5rem 2rem;
