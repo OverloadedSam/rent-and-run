@@ -254,6 +254,50 @@ p {
   }
 }
 
+/* Loader */
+.loader {
+  margin: 4rem auto;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5px;
+  max-width: 70px;
+  justify-items: center;
+  animation-name: rotate;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.loader span {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.loader :nth-child(1) {
+  background-color: var(--color-primary);
+}
+.loader :nth-child(2) {
+  background-color: var(--color-accent);
+}
+.loader :nth-child(3) {
+  background-color: var(--color-headings);
+}
+.loader :nth-child(4) {
+  background-color: var(--color-secondary);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Grids */
 .grid {
   display: grid;
