@@ -234,6 +234,24 @@ p {
   color: #fff;
 }
 
+/* Media Objects */
+.media {
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+.media__image {
+  margin-top: 1rem;
+}
+
+.media__body {
+  margin: 0 2rem;
+}
+
+.media__title {
+  margin-top: 0;
+}
+
 /* Inputs */
 .input {
   border-radius: var(--input-border-radius);
