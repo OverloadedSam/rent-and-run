@@ -378,7 +378,7 @@ p {
 }
 
 .block--skewed {
-  clip-path: polygon(0% 0%, 100% 10%, 100% 100%, 0% 90%);
+  clip-path: polygon(0% 0%, 100% 3%, 100% 100%, 0% 97%);
 }
 
 .block__header {
@@ -688,5 +688,24 @@ p {
 @media screen and (min-width: 768px) {
   .feature:nth-of-type(even) .feature__content {
     order: 2;
+  }
+}
+
+/* Showcase */
+.block-showcase__image > img {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .block-showcase .grid {
+    grid-template-columns: 50% 50%;
+  }
+
+  .block-showcase__image {
+    justify-self: end;
+  }
+
+  .block-showcase__image > img {
+    width: auto;
   }
 }
