@@ -709,3 +709,47 @@ p {
     width: auto;
   }
 }
+
+/* Hero */
+.hero {
+  background: url('../../public/assets/background.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-shadow: 0px 5px 10px #000000;
+}
+
+.hero__overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.hero__headline {
+  margin-top: 0;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.hero__tagline {
+  font-size: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin: 3rem 0 4rem;
+}
+
+.hero .btn {
+  letter-spacing: 1px;
+}
+
+@media screen and (min-width: 768px) {
+  .hero__content {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero .block {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
