@@ -6,5 +6,16 @@ import Grid from './Grid';
 import Collapsible from './Collapsible';
 import Loader from './Loader';
 import Media from './Media';
+import Quote from './Quote';
 
-export { Container, Badge, Button, Card, Grid, Collapsible, Loader, Media };
+export {
+  Container,
+  Badge,
+  Button,
+  Card,
+  Grid,
+  Collapsible,
+  Loader,
+  Media,
+  Quote,
+};
