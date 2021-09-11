@@ -4,5 +4,6 @@ import Footer from './Footer';
 import Features from './Features';
 import Showcase from './Showcase';
 import Hero from './Hero';
+import Testimonial from './Testimonial';
 
-export { NavBar, ProductCard, Footer, Features, Showcase, Hero };
+export { NavBar, ProductCard, Footer, Features, Showcase, Hero, Testimonial };
