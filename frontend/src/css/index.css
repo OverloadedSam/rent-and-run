@@ -129,9 +129,21 @@ p {
   height: 30px;
 }
 
+.icon--primary {
+  fill: var(--color-primary);
+}
+
+.icon--secondary {
+  fill: var(--color-secondary);
+}
+
+.icon--accent {
+  fill: var(--color-accent);
+}
+
 .icon-container {
   align-items: center;
-  background-color: #e9e9e9;
+  background-color: #eee;
   border-radius: 100%;
   display: inline-flex;
   height: 64px;
@@ -822,6 +834,8 @@ p {
 
 .feature__image {
   width: 100%;
+  border-radius: 7px;
+  box-shadow: 0px 0px 10px var(--color-body);
 }
 
 @media screen and (min-width: 768px) {
@@ -842,6 +856,7 @@ p {
 
   .block-showcase__image {
     justify-self: end;
+    align-self: center;
   }
 
   .block-showcase__image > img {
