@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 /* Container class */
 .container {
   max-width: 1140px;
@@ -699,7 +705,7 @@ p {
 .callout {
   background-color: var(--color-primary);
   color: #fff;
-  padding: 5rem;
+  padding: 4rem;
   border-radius: 7px;
 }
 
@@ -709,6 +715,7 @@ p {
 
 .callout__heading {
   color: #fff;
+  font-size: 3rem;
   margin-top: 0;
 }
 
@@ -734,7 +741,9 @@ p {
 
 /* Footer */
 .footer.block {
+  padding-top: 10rem;
   background-color: var(--color-headings);
+  margin-top: auto;
 }
 
 .footer__section {
@@ -906,4 +915,9 @@ p {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
+}
+
+/* SignUp Callout */
+.callout {
+  transform: translateY(5rem);
 }
