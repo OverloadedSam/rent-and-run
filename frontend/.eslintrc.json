@@ -26,10 +26,9 @@
                 "allowTemplateLiterals": true
             }
         ],
-        "operator-linebreak": [
-            "error",
-            "after"
-        ],
+        "operator-linebreak": "off",
+        "no-nested-ternary": "off",
+        "default-param-last": "off",
         "camelcase": "off",
         "jsx-quotes": [
             "warn",
