@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Collapsible } from '../common';
 
 const Footer = () => (
@@ -9,13 +10,13 @@ const Footer = () => (
           <Collapsible heading='Services' expanded>
             <ul className='list'>
               <li>
-                <a href='/vehicles'>Rent Vehicles</a>
+                <Link to='/vehicles'>Rent Vehicles</Link>
               </li>
               <li>
-                <a href='/'>Buy & Sell Vehicles</a>
+                <Link to='/'>Buy & Sell Vehicles</Link>
               </li>
               <li>
-                <a href='/'>Vehicle Care</a>
+                <Link to='/'>Vehicle Care</Link>
               </li>
             </ul>
           </Collapsible>
@@ -24,13 +25,13 @@ const Footer = () => (
           <Collapsible heading='Products'>
             <ul className='list'>
               <li>
-                <a href='/'>Car Accessories</a>
+                <Link to='/'>Car Accessories</Link>
               </li>
               <li>
-                <a href='/'>Bike Riding Gears</a>
+                <Link to='/'>Bike Riding Gears</Link>
               </li>
               <li>
-                <a href='/'>Customizations</a>
+                <Link to='/'>Customizations</Link>
               </li>
             </ul>
           </Collapsible>
@@ -39,16 +40,16 @@ const Footer = () => (
           <Collapsible heading='Company'>
             <ul className='list'>
               <li>
-                <a href='/'>About</a>
+                <Link to='/about'>About</Link>
               </li>
               <li>
-                <a href='/'>Affiliates</a>
+                <Link to='/'>Affiliates</Link>
               </li>
               <li>
-                <a href='/'>Policy</a>
+                <Link to='/policy'>Policy</Link>
               </li>
               <li>
-                <a href='/'>Careers</a>
+                <Link to='/'>Careers</Link>
               </li>
             </ul>
           </Collapsible>
@@ -57,16 +58,16 @@ const Footer = () => (
           <Collapsible heading='Support'>
             <ul className='list'>
               <li>
-                <a href='/'>FAQs</a>
+                <Link to='/'>FAQs</Link>
               </li>
               <li>
-                <a href='/'>Contact</a>
+                <Link to='/'>Contact</Link>
               </li>
               <li>
-                <a href='/'>Forums</a>
+                <Link to='/'>Forums</Link>
               </li>
               <li>
-                <a href='/'>Report A Problem</a>
+                <Link to='/'>Report A Problem</Link>
               </li>
             </ul>
           </Collapsible>

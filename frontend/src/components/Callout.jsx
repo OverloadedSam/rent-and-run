@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Grid, Button } from '../common';
 
 const Callout = () => (
@@ -12,7 +13,13 @@ const Callout = () => (
           will be valid for short period.
         </p>
       </div>
-      <Button variant='secondary' type='button' stretched>
+      <Button
+        variant='secondary'
+        type='button'
+        stretched
+        as={Link}
+        to='/signup'
+      >
         Sign Up
       </Button>
     </Grid>

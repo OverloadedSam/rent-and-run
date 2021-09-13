@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   const hamburger = useRef(null);
@@ -9,9 +10,9 @@ const NavBar = () => {
 
   return (
     <nav ref={hamburger} className='navbar'>
-      <a className='nav__brand' href='/'>
+      <NavLink className='nav__brand' to='/'>
         <img src='assets/logo.png' alt='Rent and run' />
-      </a>
+      </NavLink>
 
       <div
         className='nav__toggler'
@@ -27,16 +28,16 @@ const NavBar = () => {
 
       <ul className='list nav__list'>
         <li className='nav__item'>
-          <a href='/'>Home</a>
+          <NavLink to='/'>Home</NavLink>
         </li>
         <li className='nav__item'>
-          <a href='/about'>About</a>
+          <NavLink to='/about'>About</NavLink>
         </li>
         <li className='nav__item'>
-          <a href='/vehicles'>Vehicles</a>
+          <NavLink to='/vehicles'>Vehicles</NavLink>
         </li>
         <li className='nav__item'>
-          <a href='/policy'>Policy</a>
+          <NavLink to='/policy'>Policy</NavLink>
         </li>
       </ul>
     </nav>

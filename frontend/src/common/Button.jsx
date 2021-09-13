@@ -1,7 +1,17 @@
 import React from 'react';
+import PropType from 'prop-types';
 
-const Button = ({ ...props }) => {
-  let { type, variant, size, block, stretched } = props;
+const Button = (props) => {
+  let {
+    as: Component,
+    children,
+    type,
+    variant,
+    size,
+    block,
+    stretched,
+    ...rest
+  } = props;
 
   variant = variant && `btn--${variant}`;
   size = size && `btn--${size}`;
@@ -9,22 +19,29 @@ const Button = ({ ...props }) => {
   stretched = stretched && 'btn--stretched';
 
   return (
-    <button
+    <Component
       className={`btn ${variant} ${size} ${block} ${stretched}`}
       type={type}
-      onClick={props.onClick}
+      {...rest}
     >
-      {props.children}
-    </button>
+      {children}
+    </Component>
   );
+};
+
+Button.propTypes = {
+  type: PropType.oneOf(['button', 'submit', 'reset']),
+  variant: PropType.oneOf(['primary', 'secondary', 'accent', 'outline']),
+  size: PropType.oneOf(['small', '']),
 };
 
 Button.defaultProps = {
   type: 'button',
-  variant: 'btn--primary',
+  variant: 'primary',
   size: '',
   block: '',
   stretched: '',
+  as: 'button',
 };
 
 export default Button;

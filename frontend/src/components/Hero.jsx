@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Grid, Button } from '../common';
 
 const Hero = () => (
@@ -13,7 +14,9 @@ const Hero = () => (
             Your satisfaction is our main aim, We make your drive memorable.
             Enjoy your holidays and trips with our wheels. Just Rent and Run!
           </p>
-          <Button variant='accent'>See Vehicles</Button>
+          <Button variant='accent' as={Link} to='/vehicles'>
+            See Vehicles
+          </Button>
         </header>
         <div />
       </Grid>

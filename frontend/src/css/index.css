@@ -623,7 +623,8 @@ p {
   transition: color 0.3s;
 }
 
-.nav__item > a:hover {
+.nav__item > a:hover,
+.nav__item > a.active {
   color: var(--color-secondary);
 }
 
@@ -902,6 +903,7 @@ p {
 
 .hero .btn {
   letter-spacing: 1px;
+  text-shadow: none;
 }
 
 @media screen and (min-width: 768px) {
