@@ -670,6 +670,11 @@ p {
 }
 
 /* Product Card */
+.product {
+  display: grid;
+  grid-template: 1fr / 1fr;
+}
+
 .product .card__header,
 .product .card__body {
   padding-left: 2rem;
@@ -940,4 +945,19 @@ p {
 /* SignUp Callout */
 .callout {
   transform: translateY(5rem);
+}
+
+/* Vehicles Block */
+.block-vehicles .grid {
+  gap: 5rem 2rem;
+}
+
+.block-vehicles .product {
+  max-width: 500px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .block-vehicles .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
