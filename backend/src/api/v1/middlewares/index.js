@@ -3,6 +3,7 @@ const errorHandler = require('./errorHandler');
 const protect = require('./protect');
 const admin = require('./admin');
 const verifyId = require('./verifyId');
+const validateOrigin = require('./validateOrigin');
 
 module.exports = {
   asyncHandler,
@@ -10,4 +11,5 @@ module.exports = {
   protect,
   admin,
   verifyId,
+  validateOrigin,
 };

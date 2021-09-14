@@ -2,7 +2,7 @@ const express = require('express');
 const config = require('config');
 const morgan = require('morgan');
 const routes = require('./routes');
-const { errorHandler } = require('./middlewares');
+const { errorHandler, validateOrigin } = require('./middlewares');
 
 const server = express();
 
@@ -11,6 +11,7 @@ if (server.get('env') !== 'production') {
 }
 
 server.use(express.json({ extended: true }));
+server.use(validateOrigin);
 
 const apiUrl = config.get('API_URL');
 
