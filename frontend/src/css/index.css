@@ -436,6 +436,24 @@ p {
   }
 }
 
+/* Errors */
+.error {
+  padding: 1rem 4rem;
+  background-color: var(--color-accent);
+  border-radius: 10px;
+}
+
+.error__heading {
+  color: #fff;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-secondary);
+}
+
+.error__message {
+  color: #fff;
+  margin-top: 2rem;
+}
+
 /* Grids */
 .grid {
   display: grid;

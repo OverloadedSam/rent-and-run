@@ -5,6 +5,7 @@ import Card from './Card';
 import Grid from './Grid';
 import Collapsible from './Collapsible';
 import Loader from './Loader';
+import Error from './Error';
 import Media from './Media';
 import Quote from './Quote';
 
@@ -16,6 +17,7 @@ export {
   Grid,
   Collapsible,
   Loader,
+  Error,
   Media,
   Quote,
 };
