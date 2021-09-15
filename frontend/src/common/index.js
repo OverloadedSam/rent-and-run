@@ -8,6 +8,7 @@ import Loader from './Loader';
 import Error from './Error';
 import Media from './Media';
 import Quote from './Quote';
+import Form from './Form';
 
 export {
   Container,
@@ -20,4 +21,5 @@ export {
   Error,
   Media,
   Quote,
+  Form,
 };
