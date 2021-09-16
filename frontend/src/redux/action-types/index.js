@@ -1,3 +1,4 @@
 import vehicleTypes from './vehicleTypes';
+import userTypes from './userTypes';
 
-export { vehicleTypes };
+export { vehicleTypes, userTypes };
