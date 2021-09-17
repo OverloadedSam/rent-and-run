@@ -1018,7 +1018,8 @@ p {
 }
 
 /* Sign UP and Sign In  */
-.signup {
+.signup,
+.signin {
   max-width: 600px;
   box-shadow: 0 0 10px var(--color-body);
   padding: 1rem 3rem;
@@ -1026,7 +1027,8 @@ p {
   border-radius: 7px;
 }
 
-.signup__logo {
+.signup__logo,
+.signin__logo {
   width: 100px;
   display: block;
   margin: 0 auto;
@@ -1037,7 +1039,12 @@ p {
   stroke: var(--color-accent);
 }
 
-.signup__heading {
+.signin__logo {
+  stroke: var(--color-primary);
+}
+
+.signup__heading,
+.signin__heading {
   margin: 3rem 0 4rem 0;
   padding-left: 2rem;
   text-transform: uppercase;
@@ -1047,51 +1054,64 @@ p {
   border-left: 1rem solid var(--color-accent);
 }
 
+.signin__heading {
+  border-left: 1rem solid var(--color-primary);
+}
+
 .signup__name-container {
   justify-self: flex-start;
   width: 100%;
 }
 
-.signup .label {
+.signup .label,
+.signin .label {
   margin-left: 1rem;
 }
 
-.signup .input-error {
+.signup .input-error,
+.signin .input-error {
   padding: 0.5rem 0 0.5rem 1rem;
 }
 
-.signup .input-group {
+.signup .input-group,
+.signin .input-group {
   margin-bottom: 3rem;
 }
 
-.signup__password-toggler .icon {
+.signup__password-toggler .icon,
+.signin__password-toggler .icon {
   cursor: pointer;
 }
 
-.signup__prompt {
+.signup__prompt,
+.signin__prompt {
   margin-top: 3rem;
   font-size: 1.5rem;
   text-align: center;
 }
 
-.signup__prompt a {
+.signup__prompt a,
+.signin__prompt a {
   color: var(--color-headings);
   text-decoration: none;
 }
 
-.signup__response-error {
+.signup__response-error,
+.signin__response-error {
   text-align: center;
   font-weight: bold;
   color: var(--color-accent);
 }
 
 @media screen and (min-width: 768px) {
-  .signup {
+  .signup,
+  .signin {
     margin: 5rem auto;
     padding: 1rem 5rem;
   }
 
-  .signup__prompt {
+  .signup__prompt,
+  .signin__prompt {
     font-size: 1.8rem;
   }
 }
