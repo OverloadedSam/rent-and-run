@@ -235,6 +235,10 @@ p {
   transition: background-color 0.3s;
 }
 
+.navbar .btn {
+  margin: 0;
+}
+
 .btn:disabled {
   cursor: not-allowed;
 }
@@ -707,6 +711,8 @@ p {
 
   .nav__list {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: auto;
     max-height: 100%;
     opacity: 1;
@@ -1008,5 +1014,84 @@ p {
 @media screen and (min-width: 768px) and (max-width: 1023px) {
   .block-vehicles .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Sign UP and Sign In  */
+.signup {
+  max-width: 600px;
+  box-shadow: 0 0 10px var(--color-body);
+  padding: 1rem 3rem;
+  margin: 5rem 1rem;
+  border-radius: 7px;
+}
+
+.signup__logo {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.signup__logo {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
+}
+
+.signup__heading {
+  margin: 3rem 0 4rem 0;
+  padding-left: 2rem;
+  text-transform: uppercase;
+}
+
+.signup__heading {
+  border-left: 1rem solid var(--color-accent);
+}
+
+.signup__name-container {
+  justify-self: flex-start;
+  width: 100%;
+}
+
+.signup .label {
+  margin-left: 1rem;
+}
+
+.signup .input-error {
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.signup .input-group {
+  margin-bottom: 3rem;
+}
+
+.signup__password-toggler .icon {
+  cursor: pointer;
+}
+
+.signup__prompt {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.signup__prompt a {
+  color: var(--color-headings);
+  text-decoration: none;
+}
+
+.signup__response-error {
+  text-align: center;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+@media screen and (min-width: 768px) {
+  .signup {
+    margin: 5rem auto;
+    padding: 1rem 5rem;
+  }
+
+  .signup__prompt {
+    font-size: 1.8rem;
   }
 }

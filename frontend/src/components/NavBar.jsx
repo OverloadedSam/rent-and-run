@@ -1,8 +1,11 @@
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Button } from '../common';
 
 const NavBar = () => {
   const hamburger = useRef(null);
+  const user = useSelector((state) => state.userLogin);
 
   const handleToggle = () => {
     hamburger.current.classList.toggle('nav--expanded');
@@ -39,6 +42,15 @@ const NavBar = () => {
         <li className='nav__item'>
           <NavLink to='/policy'>Policy</NavLink>
         </li>
+        {!user.isLoggedIn && (
+          <li className='nav__item'>
+            <NavLink to='/signin'>
+              <Button variant='secondary' size='small'>
+                Sign In
+              </Button>
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   );
