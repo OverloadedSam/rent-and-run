@@ -9,6 +9,7 @@ import Error from './Error';
 import Media from './Media';
 import Quote from './Quote';
 import Form from './Form';
+import Dropdown from './Dropdown';
 
 export {
   Container,
@@ -22,4 +23,5 @@ export {
   Media,
   Quote,
   Form,
+  Dropdown,
 };

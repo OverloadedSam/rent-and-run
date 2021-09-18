@@ -162,6 +162,17 @@ p {
   fill: #fff;
 }
 
+.dropdown__list-item .icon-container {
+  height: 40px;
+  width: 40px;
+  margin-right: 1rem;
+}
+
+.dropdown__list-item .icon {
+  width: 25px;
+  height: 25px;
+}
+
 /* Buttons */
 .btn {
   border-radius: 40px;
@@ -559,6 +570,72 @@ p {
   transform: rotate(0deg);
 }
 
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown__link {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown__link .icon {
+  width: 10px;
+  height: 10px;
+  margin-left: 1rem;
+  fill: #fff;
+}
+
+.dropdown__menu {
+  border-radius: 7px;
+  background-color: #fff;
+  box-shadow: 0 0 5px 0 var(--color-body);
+  position: absolute;
+  left: 0;
+  top: calc(100% + 1.5rem);
+  padding: 2rem;
+  transform: translateY(-30px);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.dropdown--expanded .dropdown__menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown__list {
+  padding: 0;
+}
+
+.dropdown__list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.dropdown__list-item:hover {
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+.dropdown__list-item a {
+  color: var(--color-body);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .dropdown__menu {
+    left: auto;
+    right: 0;
+  }
+}
+
 /* Blocks */
 .block {
   padding: 5rem 2rem;
@@ -677,10 +754,10 @@ p {
 .nav__list {
   width: 100%;
   max-height: 0;
-  overflow: hidden;
   opacity: 0;
   margin: 0;
   transition: all 0.25s;
+  pointer-events: none;
 }
 
 .nav__item {
@@ -695,13 +772,14 @@ p {
 }
 
 .nav__item > a:hover,
-.nav__item > a.active {
+.nav__item a.active {
   color: var(--color-secondary);
 }
 
 .nav--expanded .nav__list {
   max-height: 100%;
   opacity: 1;
+  pointer-events: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -716,6 +794,7 @@ p {
     width: auto;
     max-height: 100%;
     opacity: 1;
+    pointer-events: auto;
   }
 
   .nav__item {

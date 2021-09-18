@@ -1,11 +1,29 @@
 import React, { useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Button } from '../common';
+import { Button, Dropdown } from '../common';
 
 const NavBar = () => {
   const hamburger = useRef(null);
   const user = useSelector((state) => state.userLogin);
+
+  const dropdownList = [
+    {
+      label: 'My Profile',
+      to: '/profile',
+      icon: 'profile.svg#user',
+    },
+    {
+      label: 'Cart',
+      to: '/cart',
+      icon: 'cart.svg#cart',
+    },
+    {
+      label: 'Log out',
+      to: '/logout',
+      icon: 'logout.svg#logout',
+    },
+  ];
 
   const handleToggle = () => {
     hamburger.current.classList.toggle('nav--expanded');
@@ -14,7 +32,7 @@ const NavBar = () => {
   return (
     <nav ref={hamburger} className='navbar'>
       <NavLink className='nav__brand' to='/'>
-        <img src='assets/logo.png' alt='Rent and run' />
+        <img src='/assets/logo.png' alt='Rent and run' />
       </NavLink>
 
       <div
@@ -49,6 +67,11 @@ const NavBar = () => {
                 Sign In
               </Button>
             </NavLink>
+          </li>
+        )}
+        {user.isLoggedIn && (
+          <li className='nav__item user-profile-btn'>
+            <Dropdown label='More' list={dropdownList} />
           </li>
         )}
       </ul>
