@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   userRegister: userReducer.userRegisterReducer,
   userLogin: userReducer.userLoginReducer,
   vehicles: vehicleReducer.vehiclesReducer,
+  vehicleDetails: vehicleReducer.vehicleDetailsReducer,
 });
 
 const middleware = [thunk];
