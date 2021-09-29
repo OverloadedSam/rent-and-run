@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Button } from '../common';
 
 const ProductCard = ({ ...props }) => {
-  const { brand, model_name, images, daily_rental_rate } = props;
+  const { id, brand, model_name, images, daily_rental_rate } = props;
 
   return (
     <Card className='product'>
@@ -17,9 +18,11 @@ const ProductCard = ({ ...props }) => {
           @{` ₹${daily_rental_rate}`}
           <span> /Day</span>
         </span>
-        <Button variant='accent' size='small'>
-          Book Now
-        </Button>
+        <Link to={`/vehicle/${id}`}>
+          <Button variant='accent' size='small'>
+            Book Now
+          </Button>
+        </Link>
       </Card.Body>
     </Card>
   );

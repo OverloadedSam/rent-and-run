@@ -1194,3 +1194,147 @@ p {
     font-size: 1.8rem;
   }
 }
+
+/* Vehicle Details Screen Block */
+/* Display Card */
+.block-vehicle-screen .card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 20%);
+}
+
+.vehicle__display.card {
+  justify-self: stretch;
+  height: max-content;
+}
+
+.vehicle__display .card__header {
+  padding: 1rem 1rem 0 1rem;
+}
+
+.vehicle__display .card__body {
+  padding: 0 1rem 0 1rem;
+}
+
+.vehicle__display__image {
+  width: 100%;
+  border-radius: 7px;
+}
+
+/* Details Card */
+.vehicle__details.card {
+  justify-self: stretch;
+}
+
+.vehicle__details .card__body {
+  padding-top: 0;
+}
+
+.vehicle__details .vehicle__name {
+  margin: 0;
+}
+
+.vehicle__details .vehicle__rental-rate {
+  margin-top: 1rem;
+  font-size: 2.5rem;
+}
+
+.vehicle__rental-rate span:first-of-type,
+.vehicle__rental-rate span:last-of-type {
+  color: var(--color-primary);
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+.vehicle__rental-rate span:last-of-type {
+  color: var(--color-body);
+}
+
+/* Details Card - Vehicle Features */
+.vehicle__features {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 10px;
+}
+
+.vehicle__features-label {
+  color: var(--color-headings);
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+.vehicle__features .icon-container {
+  width: 40px;
+  height: 40px;
+  margin-top: 0;
+}
+
+.vehicle__features .icon {
+  width: 25px;
+  height: 25px;
+}
+
+.vehicle__features .media__body {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+.vehicle__features .media__title {
+  color: var(--color-body);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.vehicle__features .media,
+.vehicle__features .media__description {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+
+/* Vehicle Description & Vehicle Terms and Conditions */
+.vehicle__description,
+.vehicle__terms {
+  margin-top: 1rem;
+}
+
+.vehicle__description__heading,
+.vehicle__terms__heading {
+  font-weight: normal;
+  margin: 0;
+}
+
+.vehicle__description .card__body,
+.vehicle__terms .card__body {
+  padding-top: 0;
+}
+
+.vehicle__terms .list {
+  margin-top: 0;
+  padding-left: 2rem;
+  list-style-type: circle;
+}
+
+@media screen and (min-width: 768px) {
+  .vehicle__display.card {
+    position: sticky;
+    top: 1rem;
+  }
+
+  .vehicle__features .icon-container {
+    width: 64px;
+    height: 64px;
+  }
+
+  .vehicle__features .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vehicle__features .media__title {
+    font-size: 1.8rem;
+  }
+
+  .vehicle__features .media__description {
+    font-size: 1.8rem;
+  }
+}
