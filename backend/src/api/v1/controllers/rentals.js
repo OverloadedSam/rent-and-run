@@ -1,6 +1,6 @@
 const { asyncHandler } = require('../middlewares');
 const { Rental, Coupon, Vehicle } = require('../models');
-const { ErrorResponse, calculateNumberOfDays } = require('../utils');
+const { ErrorResponse, DateTime } = require('../utils');
 
 // @route   GET /api/v1/rentals
 // @access  Admin
@@ -74,17 +74,8 @@ const createRental = asyncHandler(async (req, res, next) => {
     returning_date: returningDate,
   } = rentalData;
 
-  // When date of booking is coming after the date of returning.
-  if (new Date(bookingDate) > new Date(returningDate)) {
-    return next(new ErrorResponse(422, 'Invalid returning date!'));
-  }
-
-  // When booking or returning date is of past time.
-  if (
-    new Date(bookingDate) <= new Date() ||
-    new Date(returningDate) <= new Date()
-  ) {
-    return next(new ErrorResponse(422, 'Invalid date!'));
+  if (DateTime.validateDateRange(bookingDate, returningDate)) {
+    return next(new ErrorResponse(422, 'Invalid Date!'));
   }
 
   const [vehicleData] = await Vehicle.getVehicleDetails(vehicleId);
@@ -104,7 +95,10 @@ const createRental = asyncHandler(async (req, res, next) => {
     rentalData.coupon = coupon.length ? coupon[0].id : null;
   }
 
-  const daysCountForRental = calculateNumberOfDays(bookingDate, returningDate);
+  const daysCountForRental = DateTime.calculateNumberOfDays(
+    bookingDate,
+    returningDate
+  );
   rentalData.payment_status = 2; // Set payment status to "pending" by default.
   rentalData.rent_amount =
     Number(vehicleData[0][0].daily_rental_rate) * daysCountForRental +

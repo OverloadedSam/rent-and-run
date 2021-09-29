@@ -1,7 +1,7 @@
 const ErrorResponse = require('./errorResponse');
-const calculateNumberOfDays = require('./calculateTime');
+const DateTime = require('./dateTime');
 
 module.exports = {
   ErrorResponse,
-  calculateNumberOfDays,
+  DateTime,
 };
