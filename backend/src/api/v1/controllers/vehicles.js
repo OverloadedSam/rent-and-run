@@ -1,16 +1,28 @@
 const { asyncHandler } = require('../middlewares');
 const { Vehicle } = require('../models');
-const { ErrorResponse } = require('../utils');
+const { ErrorResponse, DateTime } = require('../utils');
 const { validateVehicleData, validateVehicleUpdateData } =
   require('../validations').vehicle;
 
-// @route   GET /api/v1/vehicles
+// @route   GET /api/v1/vehicles?bookingDate='date'&returningDate='date'
 // @access  Public
 // @desc    Get only essential details of vehicles.
 const getVehicles = asyncHandler(async (req, res, next) => {
-  const [vehicleData] = await Vehicle.getVehicles();
+  const { bookingDate, returningDate } = req.query;
+  let vehicleData = [];
+
+  const error = DateTime.validateDateRange(bookingDate, returningDate);
+  if (error || !bookingDate || !returningDate) {
+    [vehicleData] = await Vehicle.getVehicles();
+  } else {
+    [[vehicleData]] = await Vehicle.getAvailableVehiclesOnDate(
+      bookingDate,
+      returningDate
+    );
+  }
+
   if (vehicleData.length === 0) {
-    return next(new ErrorResponse(404, 'There are no vehicles in database'));
+    return next(new ErrorResponse(404, 'Sorry!, Vehicles not found.'));
   }
 
   return res.status(200).json({
@@ -25,11 +37,23 @@ const getVehicles = asyncHandler(async (req, res, next) => {
 // @desc    Get full detail of a vehicle by specifying id.
 const getVehicleWithDetails = asyncHandler(async (req, res, next) => {
   const vehicleId = req.params.vehicle_id;
+  const { bookingDate, returningDate } = req.query;
   const [vehicleData] = await Vehicle.getVehicleDetails(vehicleId);
 
   if (vehicleData[0].length === 0) {
     const message = `Vehicle not found with given id "${vehicleId}"`;
     return next(new ErrorResponse(404, message));
+  }
+
+  const error = DateTime.validateDateRange(bookingDate, returningDate);
+  if (!error) {
+    const [availableCount] = await Vehicle.getAvailableVehicleCountOnDate(
+      vehicleId,
+      bookingDate,
+      returningDate
+    );
+
+    vehicleData[0][0].available_count = availableCount;
   }
 
   return res.status(200).json({

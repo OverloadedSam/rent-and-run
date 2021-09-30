@@ -41,6 +41,24 @@ class Vehicle {
     return db.execute(query);
   }
 
+  // Get all available vehicles for given date range.
+  static async getAvailableVehiclesOnDate(bookingDate, returningDate) {
+    const query = 'CALL get_available_vehicles_on_date(?, ?);';
+
+    return db.execute(query, [bookingDate, returningDate]);
+  }
+
+  // Get available count for a vehicle on given date range.
+  static async getAvailableVehicleCountOnDate(
+    vehicleId,
+    bookingDate,
+    returningDate
+  ) {
+    const query = 'SELECT get_available_vehicle_count_on_date(?, ?, ?);';
+
+    return db.execute(query, [vehicleId, bookingDate, returningDate]);
+  }
+
   // Get full details of a vehicle.
   static async getVehicleDetails(vehicleId) {
     const query = 'CALL get_vehicle_details(?);';
