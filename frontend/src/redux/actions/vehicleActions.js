@@ -1,11 +1,12 @@
 import { http } from '../../services';
 import { vehicleTypes as actions } from '../action-types';
 
-const getVehiclesList = () => async (dispatch) => {
+const getVehiclesList = (searchParams) => async (dispatch) => {
   dispatch({ type: actions.VEHICLES_REQUESTED });
 
   try {
-    const { data } = await http.get('/vehicles');
+    const endpoint = `/vehicles${searchParams}`;
+    const { data } = await http.get(endpoint);
     dispatch({
       type: actions.VEHICLES_SUCCEEDED,
       payload: data.data,
