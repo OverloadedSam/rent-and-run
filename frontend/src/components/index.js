@@ -6,6 +6,7 @@ import Showcase from './Showcase';
 import Hero from './Hero';
 import Testimonial from './Testimonial';
 import Callout from './Callout';
+import VehicleSearch from './VehicleSearch';
 
 export {
   NavBar,
@@ -16,4 +17,5 @@ export {
   Hero,
   Testimonial,
   Callout,
+  VehicleSearch,
 };
