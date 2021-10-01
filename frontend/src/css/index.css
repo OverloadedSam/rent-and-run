@@ -576,14 +576,19 @@ p {
   position: relative;
 }
 
-.dropdown__link {
+.dropdown__btn {
+  background-color: transparent;
+  border: 0;
   color: #fff;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
   text-decoration: none;
   display: flex;
   align-items: center;
 }
 
-.dropdown__link .icon {
+.dropdown__btn .icon {
   width: 10px;
   height: 10px;
   margin-left: 1rem;
@@ -773,6 +778,8 @@ p {
 }
 
 .nav__item > a:hover,
+.nav__item .dropdown button:hover,
+.nav__item .dropdown button.active,
 .nav__item a.active {
   color: var(--color-secondary);
 }

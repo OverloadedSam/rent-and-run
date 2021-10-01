@@ -61,13 +61,18 @@ const NavBar = () => {
           <NavLink to='/policy'>Policy</NavLink>
         </li>
         {!user.isLoggedIn && (
-          <li className='nav__item'>
-            <NavLink to='/signin'>
-              <Button variant='secondary' size='small'>
-                Sign In
-              </Button>
-            </NavLink>
-          </li>
+          <>
+            <li className='nav__item'>
+              <NavLink to='/cart'>Cart</NavLink>
+            </li>
+            <li className='nav__item'>
+              <NavLink to='/signin'>
+                <Button variant='secondary' size='small'>
+                  Sign In
+                </Button>
+              </NavLink>
+            </li>
+          </>
         )}
         {user.isLoggedIn && (
           <li className='nav__item user-profile-btn'>

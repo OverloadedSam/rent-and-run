@@ -2,14 +2,14 @@ import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Dropdown = ({ ...props }) => {
-  const { label, to, list } = props;
+  const { label, list } = props;
 
   const dropdown = useRef(null);
   const navigate = useNavigate();
 
-  const handleExpand = (e) => {
+  const handleExpand = () => {
     dropdown.current.classList.toggle('dropdown--expanded');
-    e.target.classList.toggle('active');
+    dropdown.current.firstChild.classList.toggle('active');
   };
 
   const handleBlur = (e) => {
@@ -38,9 +38,8 @@ const Dropdown = ({ ...props }) => {
 
   return (
     <div className='dropdown' ref={dropdown}>
-      <Link
-        to={to || '#'}
-        className='dropdown__link'
+      <button
+        className='dropdown__btn'
         onClick={handleExpand}
         onBlur={handleBlur}
       >
@@ -48,7 +47,7 @@ const Dropdown = ({ ...props }) => {
         <svg className='icon'>
           <use href='/assets/icons/triangle.svg#triangle' />
         </svg>
-      </Link>
+      </button>
 
       {list && (
         <div className='dropdown__menu'>
