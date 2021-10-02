@@ -32,7 +32,7 @@ const getVehicles = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @route   GET /api/v1/vehicle/:vehicle_id
+// @route   GET /api/v1/vehicle/:vehicle_id?bookingDate='date'&returningDate='date'
 // @access  Public
 // @desc    Get full detail of a vehicle by specifying id.
 const getVehicleWithDetails = asyncHandler(async (req, res, next) => {
@@ -47,13 +47,12 @@ const getVehicleWithDetails = asyncHandler(async (req, res, next) => {
 
   const error = DateTime.validateDateRange(bookingDate, returningDate);
   if (!error) {
-    const [availableCount] = await Vehicle.getAvailableVehicleCountOnDate(
+    const [[count]] = await Vehicle.getAvailableVehicleCountOnDate(
       vehicleId,
       bookingDate,
       returningDate
     );
-
-    vehicleData[0][0].available_count = availableCount;
+    vehicleData[0][0].available_count = count.available_count;
   }
 
   return res.status(200).json({

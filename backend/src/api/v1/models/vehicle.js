@@ -54,9 +54,10 @@ class Vehicle {
     bookingDate,
     returningDate
   ) {
-    const query = 'SELECT get_available_vehicle_count_on_date(?, ?, ?);';
+    const query =
+      'SELECT get_available_vehicle_count_on_date(?, ?, ?) AS available_count;';
 
-    return db.execute(query, [vehicleId, bookingDate, returningDate]);
+    return db.query(query, [vehicleId, bookingDate, returningDate]);
   }
 
   // Get full details of a vehicle.
