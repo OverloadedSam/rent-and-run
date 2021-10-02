@@ -7,6 +7,7 @@ import Hero from './Hero';
 import Testimonial from './Testimonial';
 import Callout from './Callout';
 import VehicleSearch from './VehicleSearch';
+import CartProduct from './CartProduct';
 
 export {
   NavBar,
@@ -18,4 +19,5 @@ export {
   Testimonial,
   Callout,
   VehicleSearch,
+  CartProduct,
 };
