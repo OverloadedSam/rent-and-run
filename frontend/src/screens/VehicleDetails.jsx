@@ -1,8 +1,15 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {
+  Link,
+  useParams,
+  useSearchParams,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { vehicleActions as action } from '../redux/actions';
 import { Container, Grid, Card, Media, Button, Loader, Error } from '../common';
+import { dateTime } from '../utils';
 
 const VehicleDetails = () => {
   const dispatch = useDispatch();
@@ -12,10 +19,23 @@ const VehicleDetails = () => {
     success,
     data: vehicle,
   } = useSelector((state) => state.vehicleDetails);
+
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const bookingDate = searchParams.get('bookingDate');
+  const returningDate = searchParams.get('returningDate');
+
+  const handleAddToCart = () => {
+    navigate(
+      `/cart/${id}?bookingDate=${bookingDate}&returningDate=${returningDate}`
+    );
+  };
 
   useEffect(() => {
-    dispatch(action.getVehicleDetails(id));
+    const url = location.pathname + location.search;
+    dispatch(action.getVehicleDetails(url));
   }, []);
 
   return (
@@ -36,7 +56,18 @@ const VehicleDetails = () => {
                 />
               </Card.Header>
               <Card.Body>
-                <Button block>Add To Cart</Button>
+                <Button
+                  block
+                  disabled={
+                    !bookingDate ||
+                    !returningDate ||
+                    !vehicle.available_count ||
+                    dateTime.validateDateRange(bookingDate, returningDate)
+                  }
+                  onClick={handleAddToCart}
+                >
+                  Add To Cart
+                </Button>
               </Card.Body>
             </Card>
 

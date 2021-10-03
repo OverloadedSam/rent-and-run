@@ -1,11 +1,10 @@
 import { http } from '../../services';
 import { vehicleTypes as actions } from '../action-types';
 
-const getVehiclesList = (searchParams) => async (dispatch) => {
+const getVehiclesList = (endpoint) => async (dispatch) => {
   dispatch({ type: actions.VEHICLES_REQUESTED });
 
   try {
-    const endpoint = `/vehicles${searchParams}`;
     const { data } = await http.get(endpoint);
     dispatch({
       type: actions.VEHICLES_SUCCEEDED,
@@ -24,11 +23,11 @@ const getVehiclesList = (searchParams) => async (dispatch) => {
   }
 };
 
-const getVehicleDetails = (id) => async (dispatch) => {
+const getVehicleDetails = (endpoint) => async (dispatch) => {
   dispatch({ type: actions.VEHICLE_DETAILS_REQUESTED });
 
   try {
-    const { data } = await http.get(`/vehicle/${id}`);
+    const { data } = await http.get(endpoint);
 
     dispatch({ type: actions.VEHICLE_DETAILS_SUCCEEDED, payload: data.data });
   } catch (error) {

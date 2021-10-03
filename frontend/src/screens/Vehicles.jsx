@@ -12,9 +12,12 @@ const Vehicles = () => {
   const dispatch = useDispatch();
   const vehicles = useSelector((state) => state.vehicles);
   const { loading, error, success, data } = vehicles;
+  const bookingDate = searchParams.get('bookingDate');
+  const returningDate = searchParams.get('returningDate');
 
   useEffect(() => {
-    dispatch(action.getVehiclesList(location.search));
+    const url = location.pathname + location.search;
+    dispatch(action.getVehiclesList(url));
   }, [location]);
 
   return (
@@ -24,8 +27,8 @@ const Vehicles = () => {
       </header>
 
       <VehicleSearch
-        bookingDate={searchParams.get('bookingDate')}
-        returningDate={searchParams.get('returningDate')}
+        bookingDate={bookingDate}
+        returningDate={returningDate}
         searchParams={searchParams}
         setSearchParams={setSearchParams}
         loading={loading}
@@ -38,7 +41,13 @@ const Vehicles = () => {
       ) : success ? (
         <Grid layout='grid--1x3'>
           {data.map((vehicle) => (
-            <ProductCard key={vehicle.id} {...vehicle} />
+            <ProductCard
+              key={vehicle.id}
+              {...vehicle}
+              searchParams={location.search}
+              bookingDate={bookingDate}
+              returningDate={returningDate}
+            />
           ))}
         </Grid>
       ) : null}

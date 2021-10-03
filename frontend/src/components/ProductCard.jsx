@@ -3,7 +3,21 @@ import { Link } from 'react-router-dom';
 import { Card, Button } from '../common';
 
 const ProductCard = ({ ...props }) => {
-  const { id, brand, model_name, images, daily_rental_rate } = props;
+  const {
+    id,
+    brand,
+    model_name,
+    images,
+    daily_rental_rate,
+    bookingDate,
+    returningDate,
+  } = props;
+
+  const url = `/vehicle/${id}${
+    bookingDate && returningDate
+      ? `?bookingDate=${bookingDate}&returningDate=${returningDate}`
+      : ``
+  }`;
 
   return (
     <Card className='product'>
@@ -18,7 +32,7 @@ const ProductCard = ({ ...props }) => {
           @{` ₹${daily_rental_rate}`}
           <span> /Day</span>
         </span>
-        <Link to={`/vehicle/${id}`}>
+        <Link to={url}>
           <Button variant='accent' size='small'>
             Book Now
           </Button>
