@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { userReducer, vehicleReducer } from './reducers';
+import { cartReducer, userReducer, vehicleReducer } from './reducers';
 import { auth } from '../services';
 
 const rootReducer = combineReducers({
@@ -9,18 +9,28 @@ const rootReducer = combineReducers({
   userLogin: userReducer.userLoginReducer,
   vehicles: vehicleReducer.vehiclesReducer,
   vehicleDetails: vehicleReducer.vehicleDetailsReducer,
+  cart: cartReducer.cartItemReducer,
 });
 
 const middleware = [thunk];
 
 const user = auth.getCurrentUser();
 const token = auth.getAuthToken();
+const cartItems = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : [];
 
 const initialState = {
   userLogin: {
     isLoggedIn: !!(user && token),
     user,
     token,
+  },
+  cart: {
+    loading: false,
+    error: null,
+    success: false,
+    cartItems,
   },
 };
 
