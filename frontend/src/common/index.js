@@ -10,6 +10,7 @@ import Media from './Media';
 import Quote from './Quote';
 import Form from './Form';
 import Dropdown from './Dropdown';
+import Alert from './Alert';
 
 export {
   Container,
@@ -24,4 +25,5 @@ export {
   Quote,
   Form,
   Dropdown,
+  Alert,
 };

@@ -519,6 +519,27 @@ p {
   margin-top: 2rem;
 }
 
+/* Alerts */
+.alert {
+  padding: 1rem;
+  border: 1px solid #000;
+  border-radius: 7px;
+  color: #fff;
+  margin: 1rem 0;
+}
+
+.alert--success {
+  background-color: #3de98e;
+}
+
+.alert--warning {
+  background-color: var(--color-secondary);
+}
+
+.alert--danger {
+  background-color: #ef5d5d;
+}
+
 /* Grids */
 .grid {
   display: grid;
@@ -873,6 +894,7 @@ p {
   margin: 0 auto;
   align-self: flex-start;
 }
+
 .cart-product .card__body {
   padding: 2rem;
   font-size: 2rem;
