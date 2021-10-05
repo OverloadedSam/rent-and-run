@@ -11,6 +11,7 @@ import Quote from './Quote';
 import Form from './Form';
 import Dropdown from './Dropdown';
 import Alert from './Alert';
+import Table from './Table';
 
 export {
   Container,
@@ -26,4 +27,5 @@ export {
   Form,
   Dropdown,
   Alert,
+  Table,
 };

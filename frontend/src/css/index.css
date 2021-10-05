@@ -457,6 +457,33 @@ p {
   }
 }
 
+/* Tables */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table__cell {
+  padding: 0.5rem;
+}
+
+.table--text-left {
+  text-align: left;
+}
+
+.table--text-center {
+  text-align: center;
+}
+
+.table--compact .table__cell {
+  padding: 0;
+}
+
+.table--striped .table__row:nth-child(odd),
+.table--hover .table__row:hover {
+  background-color: #eee;
+}
+
 /* Loader */
 .loader {
   margin: 4rem auto;
