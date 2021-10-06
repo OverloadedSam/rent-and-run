@@ -12,6 +12,7 @@ import Form from './Form';
 import Dropdown from './Dropdown';
 import Alert from './Alert';
 import Table from './Table';
+import StepCounter from './StepCounter';
 
 export {
   Container,
@@ -28,4 +29,5 @@ export {
   Dropdown,
   Alert,
   Table,
+  StepCounter,
 };
