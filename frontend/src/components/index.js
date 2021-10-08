@@ -8,6 +8,7 @@ import Testimonial from './Testimonial';
 import Callout from './Callout';
 import VehicleSearch from './VehicleSearch';
 import CartProduct from './CartProduct';
+import SummaryCard from './SummaryCard';
 
 export {
   NavBar,
@@ -20,4 +21,5 @@ export {
   Callout,
   VehicleSearch,
   CartProduct,
+  SummaryCard,
 };
