@@ -1573,3 +1573,82 @@ p {
     font-size: 1.8rem;
   }
 }
+
+/* Checkout Block */
+.block.block-checkout {
+  padding-top: 4rem;
+}
+
+.block-checkout .step-counter {
+  max-width: 50rem;
+  margin: auto;
+}
+
+.checkout-form {
+  margin: 4rem auto 0 auto;
+  max-width: 50rem;
+}
+
+.checkout-form .label {
+  margin-left: 1rem;
+}
+
+.checkout-form .input-error {
+  padding: 0.5rem 0 0.5rem 1rem;
+}
+
+.checkout-form .input-group {
+  margin-bottom: 3rem;
+}
+
+/* Place Rental Screen / Rental Details Block */
+.block-rental-details .grid {
+  row-gap: 2rem;
+}
+
+/* Rental details */
+.block-rental-details .block__header {
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+.rental-details-table .table__cell:nth-child(odd)::after,
+.payment-method-table .table__cell:nth-child(odd)::after {
+  content: ' :';
+}
+
+.rental-details-table .table__cell:nth-child(odd),
+.payment-method-table .table__cell:nth-child(odd) {
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.block-rental-details .grid h3:first-of-type {
+  margin-top: 0;
+}
+
+/* Payment status */
+.payment-method-table {
+  width: auto;
+  margin-bottom: 2rem;
+}
+
+/* Rental summary */
+.block-rental-details .summary-card {
+  width: 100%;
+  max-width: 35rem;
+}
+
+@media screen and (min-width: 768px) {
+  .block-rental-details .summary-card {
+    justify-self: flex-end;
+    align-self: flex-start;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .rental-details-table .table__cell:nth-child(odd),
+  .payment-method-table .table__cell:nth-child(odd) {
+    white-space: nowrap;
+  }
+}
