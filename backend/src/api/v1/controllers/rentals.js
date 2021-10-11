@@ -72,10 +72,15 @@ const createRental = asyncHandler(async (req, res, next) => {
     vehicle: vehicleId,
     booking_date: bookingDate,
     returning_date: returningDate,
+    payment_method: paymentMethod,
   } = rentalData;
 
+  if (!paymentMethod) {
+    return next(new ErrorResponse(422, 'Please specify payment method'));
+  }
+
   if (DateTime.validateDateRange(bookingDate, returningDate)) {
-    return next(new ErrorResponse(422, 'Invalid Date!'));
+    return next(new ErrorResponse(422, 'Booking/Returning date is invalid!'));
   }
 
   const [vehicleData] = await Vehicle.getVehicleDetails(vehicleId);
@@ -93,7 +98,7 @@ const createRental = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(400, 'Coupon has expired!'));
     }
     rentalData.coupon = coupon.length ? coupon[0].id : null;
-  }
+  } else rentalData.coupon = null;
 
   const daysCountForRental = DateTime.calculateNumberOfDays(
     bookingDate,
