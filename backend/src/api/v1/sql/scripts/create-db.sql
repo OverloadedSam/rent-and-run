@@ -131,6 +131,7 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`rentals` (
   `returning_date` DATETIME NOT NULL,
   `drop_address` VARCHAR(256) NOT NULL,
   `rent_amount` DECIMAL(9, 2) NOT NULL,
+  `payment_method` TINYINT NOT NULL,
   `payment_status` TINYINT NULL,
   `coupon` INT NULL,
   PRIMARY KEY (`id`),
@@ -138,12 +139,14 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`rentals` (
   INDEX `fk_rentals_vehicles1_idx` (`vehicle` ASC) VISIBLE,
   INDEX `fk_rentals_coupons1_idx` (`coupon` ASC) VISIBLE,
   INDEX `fk_rentals_payment_statuses1_idx` (`payment_status` ASC) VISIBLE,
+  INDEX `fk_rentals_payment_methods1_idx` (`payment_method` ASC) VISIBLE,
   CONSTRAINT `fk_rentals_users1` FOREIGN KEY (`user`) REFERENCES `rent_and_run`.`users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_rentals_vehicles1` FOREIGN KEY (`vehicle`) REFERENCES `rent_and_run`.`vehicles` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_rentals_coupons1` FOREIGN KEY (`coupon`) REFERENCES `rent_and_run`.`coupons` (`id`) ON DELETE
   SET
     NULL ON UPDATE CASCADE,
-    CONSTRAINT `fk_rentals_payment_statuses1` FOREIGN KEY (`payment_status`) REFERENCES `rent_and_run`.`payment_statuses` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+    CONSTRAINT `fk_rentals_payment_statuses1` FOREIGN KEY (`payment_status`) REFERENCES `rent_and_run`.`payment_statuses` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+    CONSTRAINT `fk_rentals_payment_methods1` FOREIGN KEY (`payment_method`) REFERENCES `rent_and_run`.`payment_methods` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -152,7 +155,6 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`rentals` (
 CREATE TABLE IF NOT EXISTS `rent_and_run`.`payments` (
   `id` VARCHAR(36) NOT NULL,
   `rental` VARCHAR(36) NOT NULL,
-  `payment_method` TINYINT NOT NULL,
   `total_amount` DECIMAL(9, 2) NOT NULL,
   `status` TINYINT NOT NULL,
   `transaction_id` VARCHAR(256) NOT NULL,
@@ -160,10 +162,8 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`payments` (
   `note` VARCHAR(512) NULL,
   `payment_details` JSON NULL,
   PRIMARY KEY (`id`, `rental`),
-  INDEX `fk_payments_payment_methods1_idx` (`payment_method` ASC) VISIBLE,
   INDEX `fk_payments_rentals1_idx` (`rental` ASC) VISIBLE,
   INDEX `fk_payments_payment_statuses1_idx` (`status` ASC) VISIBLE,
-  CONSTRAINT `fk_payments_payment_methods1` FOREIGN KEY (`payment_method`) REFERENCES `rent_and_run`.`payment_methods` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_payments_rentals1` FOREIGN KEY (`rental`) REFERENCES `rent_and_run`.`rentals` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `fk_payments_payment_statuses1` FOREIGN KEY (`status`) REFERENCES `rent_and_run`.`payment_statuses` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE = InnoDB;
