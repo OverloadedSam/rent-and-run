@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Logout } from './common';
 import { Footer, NavBar } from './components';
 import {
   Home,
@@ -16,6 +17,7 @@ function App() {
       <NavBar />
       <main>
         <Routes>
+          <Route path='/logout' element={<Logout />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/vehicle/:id' element={<VehicleDetails />} />

@@ -12,6 +12,7 @@ import Form from './Form';
 import Dropdown from './Dropdown';
 import Alert from './Alert';
 import Table from './Table';
+import Logout from './Logout';
 import StepCounter from './StepCounter';
 
 export {
@@ -29,5 +30,6 @@ export {
   Dropdown,
   Alert,
   Table,
+  Logout,
   StepCounter,
 };
