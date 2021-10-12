@@ -63,6 +63,15 @@
         "react/jsx-props-no-spreading": "off",
         "react/require-default-props": "off",
         "react/default-props-match-prop-types": "off",
-        "react/no-did-update-set-state": "off"
+        "react/no-did-update-set-state": "off",
+        "react/jsx-wrap-multilines": ["error", {
+                "declaration": "parens",
+                "assignment": "parens",
+                "return": "parens",
+                "arrow": "parens",
+                "condition": "ignore",
+                "logical": "ignore",
+                "prop": "ignore"
+            }]
     }
 }
