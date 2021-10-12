@@ -20,6 +20,29 @@ const getCoupons = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   GET /api/v1//validateCoupon
+// @access  Protected
+// @desc    Validate/Search a coupon.
+const validateCoupon = asyncHandler(async (req, res, next) => {
+  const [coupon] = await Coupon.getCouponByCode(req.body.coupon || null);
+
+  if (!coupon || !coupon[0]) {
+    return next(new ErrorResponse(404, 'Invalid coupon!'));
+  }
+
+  if (coupon[0].valid_till < new Date()) {
+    return next(new ErrorResponse(422, 'Coupon has expired!'));
+  }
+
+  delete coupon[0].valid_till;
+  delete coupon[0].id;
+  return res.status(200).json({
+    success: true,
+    status: 200,
+    data: coupon[0],
+  });
+});
+
 // @route   POST /api/v1/createCoupon
 // @access  Admin
 // @desc    Create coupons to give discount on rentals.
@@ -96,6 +119,7 @@ const updateCoupon = asyncHandler(async (req, res, next) => {
 
 module.exports = {
   getCoupons,
+  validateCoupon,
   createCoupon,
   updateCoupon,
 };
