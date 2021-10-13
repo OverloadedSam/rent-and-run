@@ -14,6 +14,7 @@ import Alert from './Alert';
 import Table from './Table';
 import Logout from './Logout';
 import StepCounter from './StepCounter';
+import RequireAuth from './RequireAuth';
 
 export {
   Container,
@@ -32,4 +33,5 @@ export {
   Table,
   Logout,
   StepCounter,
+  RequireAuth,
 };
