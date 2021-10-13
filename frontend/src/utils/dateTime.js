@@ -28,4 +28,4 @@ const validateDateRange = (firstDate, secondDate) => {
   }
 };
 
-module.exports = { calculateNumberOfDays, validateDateRange };
+export default { calculateNumberOfDays, validateDateRange };
