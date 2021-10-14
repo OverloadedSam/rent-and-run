@@ -1,7 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { cartReducer, userReducer, vehicleReducer } from './reducers';
+import {
+  cartReducer,
+  userReducer,
+  vehicleReducer,
+  couponReducer,
+} from './reducers';
 import { auth } from '../services';
 
 const rootReducer = combineReducers({
@@ -10,6 +15,7 @@ const rootReducer = combineReducers({
   vehicles: vehicleReducer.vehiclesReducer,
   vehicleDetails: vehicleReducer.vehicleDetailsReducer,
   cart: cartReducer.cartItemReducer,
+  coupon: couponReducer.validateCouponReducer,
 });
 
 const middleware = [thunk];
