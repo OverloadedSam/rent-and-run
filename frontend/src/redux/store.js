@@ -5,6 +5,7 @@ import {
   cartReducer,
   userReducer,
   vehicleReducer,
+  rentalReducer,
   couponReducer,
 } from './reducers';
 import { auth } from '../services';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   userLogin: userReducer.userLoginReducer,
   vehicles: vehicleReducer.vehiclesReducer,
   vehicleDetails: vehicleReducer.vehicleDetailsReducer,
+  createRental: rentalReducer.createRentalReducer,
   cart: cartReducer.cartItemReducer,
   coupon: couponReducer.validateCouponReducer,
 });
