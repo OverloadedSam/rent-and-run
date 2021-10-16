@@ -1601,6 +1601,12 @@ p {
   margin-bottom: 3rem;
 }
 
+.checkout-form .checkout-form__error-response {
+  text-align: center;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
 /* Place Rental Screen / Rental Details Block */
 .block-rental-details .grid {
   row-gap: 2rem;

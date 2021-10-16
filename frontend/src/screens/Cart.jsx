@@ -33,9 +33,10 @@ const Cart = () => {
       </header>
 
       <Grid layout='grid--1x2'>
-        {cartItems.map((item) => (
+        {cartItems.map((item, idx) => (
           <CartProduct
             key={item.id}
+            rentalIndex={idx}
             deleteItemHandler={handleDeleteItem}
             {...item}
           />

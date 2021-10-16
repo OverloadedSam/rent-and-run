@@ -1,28 +1,34 @@
 import React from 'react';
 import Joi from 'joi-browser';
+import { Navigate } from 'react-router-dom';
+import { withRouterProps } from '../hoc';
 import { Form, Container, StepCounter } from '../common';
 
 export class PaymentMethod extends Form {
   constructor() {
     super();
     this.state = {
-      data: { paymentMethod: '' },
+      data: { payment_method: '' },
       errors: {},
     };
   }
 
-  schema = { paymentMethod: Joi.string().required().label('Payment Method') };
+  schema = { payment_method: Joi.string().required().label('Payment Method') };
+
+  performSubmit = () => {
+    const { location, navigate } = this.props;
+    const options = { replace: true, state: { ...location.state, ...this.state.data } };
+    navigate('/checkout/placerental', options);
+  };
 
   render() {
     const paymentMethodSelect = {
-      id: 'paymentMethod',
+      id: 'payment_method',
       label: 'Payment Method',
       options: [
         { value: '', text: 'Select payment method' },
-        { value: 0, text: 'PayPal' },
-        { value: 1, text: 'RazorPay' },
-        { value: 2, text: 'Stripe' },
-        { value: 3, text: 'PayTm' },
+        { value: 1, text: 'PayPal' },
+        { value: 2, text: 'RazorPay' },
       ],
     };
 
@@ -31,6 +37,8 @@ export class PaymentMethod extends Form {
       variant: 'secondary',
       block: true,
     };
+
+    if (!this.props.location.state) return <Navigate to='/' />;
     return (
       <Container className='block block-checkout'>
         <StepCounter totalSteps={3} activeStepNumber={2} />
@@ -43,4 +51,4 @@ export class PaymentMethod extends Form {
   }
 }
 
-export default PaymentMethod;
+export default withRouterProps(PaymentMethod);

@@ -1,9 +1,53 @@
-import React from 'react';
-import { Container, StepCounter, Grid, Table, Alert } from '../common';
-import SummaryCard from '../components/SummaryCard';
+import React, { useEffect } from 'react';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  vehicleActions,
+  cartActions,
+  rentalActions as action,
+} from '../redux/actions';
+import {
+  Container,
+  StepCounter,
+  Loader,
+  Error,
+  Grid,
+  Table,
+  Alert,
+} from '../common';
+import { SummaryCard } from '../components';
+import { dateTime } from '../utils';
 
 const PlaceRental = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const {
+    loading,
+    error,
+    success,
+    data: vehicle,
+  } = useSelector((store) => store.vehicleDetails);
+  const {
+    error: rentalError,
+    success: isRentalPlaced,
+    data: rentalDetails,
+  } = useSelector((store) => store.createRental);
+
+  const { state } = location;
+  if (!state) return <Navigate to='/' />;
+
+  const { rentalIndex, coupon, drop_address, payment_method, discount_amount } =
+    state;
+  const rental = JSON.parse(localStorage.getItem('cartItems'))[rentalIndex];
+  const { id, vehicleName, bookingDate, returningDate } = rental;
+
   const activeStepNumber = 3;
+  const numberOfDays = dateTime.calculateNumberOfDays(
+    bookingDate,
+    returningDate
+  );
+
   const columns = [
     {
       path: 'key',
@@ -15,43 +59,74 @@ const PlaceRental = () => {
     },
   ];
 
+  const paymentCodes = {
+    1: 'PayPal',
+    2: 'RazorPay',
+  };
+
   const data = [
     {
       id: '1',
-      key: 'Order Id',
-      value: '1awe-687a-de5c-fa87-566a-ba78',
+      key: 'Vehicle ID',
+      value: id,
     },
     {
       id: '2',
       key: 'Vehicle',
-      value: 'Royal Enfield Meteor 350',
+      value: vehicle ? `${vehicle.brand} ${vehicle.model_name}` : vehicleName,
     },
     {
       id: '3',
       key: 'Booking Date',
-      value: 'Sun May 01 2021 20:53',
+      value: new Date(bookingDate).toString().slice(0, 21),
     },
     {
       id: '4',
       key: 'Returning Date',
-      value: 'Sun May 06 2021 09:00',
+      value: new Date(returningDate).toString().slice(0, 21),
     },
     {
       id: '5',
       key: 'Days',
-      value: '3 Days',
+      value: numberOfDays,
     },
     {
       id: '6',
       key: 'Coupon',
-      value: 'RIDER500',
+      value: coupon.trim().toUpperCase() || 'N/A',
     },
     {
       id: '7',
       key: 'Drop Location',
-      value: 'Old Delhi street no.2, Near by shine Electronics, PIN - 110006',
+      value: drop_address.trim() || 'N/A',
     },
   ];
+
+  useEffect(() => {
+    dispatch(action.resetCreateRental());
+    dispatch(vehicleActions.getVehicleDetails(`vehicle/${id}`));
+  }, []);
+
+  useEffect(() => {
+    if (isRentalPlaced) {
+      navigate(`/rental/${rentalDetails.id}`, { replace: true });
+      dispatch(action.resetCreateRental());
+      dispatch(cartActions.deleteItemFromCart({ id }));
+    }
+  }, [rentalError, isRentalPlaced]);
+
+  const handlePlaceRental = () => {
+    dispatch(
+      action.createRental({
+        vehicle: id,
+        coupon: coupon.trim(),
+        drop_address,
+        payment_method,
+        booking_date: bookingDate,
+        returning_date: returningDate,
+      })
+    );
+  };
 
   return (
     <Container className='block block-checkout block-rental-details'>
@@ -60,27 +135,43 @@ const PlaceRental = () => {
         <h2 className='block__heading'>Review and Place Rental</h2>
       </header>
 
-      <Grid layout='grid--1x2'>
-        <div>
-          <h3>Rental Details</h3>
-          <Table
-            className='rental-details-table'
-            omitHeader
-            columns={columns}
-            data={data}
-          />
-          <h3>Payment Status</h3>
-          <Table
-            className='payment-method-table'
-            columns={[{ label: 'Payment Method' }, { label: 'PayPal' }]}
-            data={[]}
-          />
-          <Alert type='danger'>Payment is pending.</Alert>
-          <Alert type='success'>Paid At Sun May 04 2022 09:00</Alert>
-        </div>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Error {...error} />
+      ) : success ? (
+        <Grid layout='grid--1x2'>
+          <div>
+            <h3>Rental Details</h3>
+            <Table
+              className='rental-details-table'
+              omitHeader
+              columns={columns}
+              data={data}
+            />
+            <h3>Payment Status</h3>
+            <Table
+              className='payment-method-table'
+              columns={[
+                { label: 'Payment Method' },
+                { label: paymentCodes[payment_method] },
+              ]}
+              data={[]}
+            />
+            <Alert type='danger'>
+              {rentalError ? rentalError.errorMessage : 'Place rental to pay.'}
+            </Alert>
+          </div>
 
-        <SummaryCard />
-      </Grid>
+          <SummaryCard
+            dailyRentalRate={vehicle.daily_rental_rate}
+            daysOfRental={numberOfDays}
+            securityDeposit={vehicle.security_amount}
+            couponDiscountAmount={discount_amount}
+            placeRentalHandler={handlePlaceRental}
+          />
+        </Grid>
+      ) : null}
     </Container>
   );
 };

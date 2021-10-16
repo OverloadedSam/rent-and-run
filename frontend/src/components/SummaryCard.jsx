@@ -1,7 +1,20 @@
 import React from 'react';
 import { Card, Button, Table } from '../common';
 
-const SummaryCard = () => {
+const SummaryCard = (props) => {
+  const {
+    dailyRentalRate,
+    daysOfRental,
+    securityDeposit,
+    couponDiscountAmount,
+    placeRentalHandler,
+  } = props;
+  const subTotalAmount = Number(dailyRentalRate) * daysOfRental;
+  const grandTotal =
+    Number(subTotalAmount) +
+    Number(securityDeposit) -
+    Number(couponDiscountAmount || 0);
+
   const summaryColumns = [
     {
       path: 'key',
@@ -17,22 +30,22 @@ const SummaryCard = () => {
     {
       id: '1',
       key: 'Daily Rental Rate',
-      value: '₹ 3999',
+      value: `₹ ${dailyRentalRate}`,
     },
     {
       id: '2',
       key: 'Subtotal Amount',
-      value: '₹ 14000',
+      value: `₹ ${subTotalAmount.toFixed(2)}`,
     },
     {
       id: '3',
       key: 'Security Deposit',
-      value: '₹ 5000',
+      value: `₹ ${securityDeposit}`,
     },
     {
       id: '4',
       key: 'Coupon Discount',
-      value: '₹ 3999',
+      value: `₹ ${couponDiscountAmount || 0}`,
     },
   ];
 
@@ -46,11 +59,14 @@ const SummaryCard = () => {
         <Table omitHeader columns={summaryColumns} data={summaryData} />
         <hr />
         <Table
-          columns={[{ label: 'Grand Total' }, { label: '₹ 17999' }]}
+          columns={[
+            { label: 'Grand Total' },
+            { label: `₹ ${grandTotal.toFixed(2)}` },
+          ]}
           data={[]}
         />
         <hr />
-        <Button variant='secondary' block>
+        <Button variant='secondary' block onClick={placeRentalHandler}>
           Place Rental
         </Button>
       </Card.Body>

@@ -12,6 +12,7 @@ const CartProduct = ({ ...props }) => {
     returningDate,
     dailyRentalRate,
     deleteItemHandler,
+    rentalIndex,
   } = props;
 
   const rentalAmount = (
@@ -44,7 +45,14 @@ const CartProduct = ({ ...props }) => {
           <li className='list-item'>₹ {rentalAmount}</li>
         </ul>
         <div className='cart-product__button-container'>
-          <Button variant='primary'>Checkout</Button>
+          <Button
+            as={Link}
+            to='/checkout/coupon'
+            state={{ rentalIndex }}
+            variant='primary'
+          >
+            Checkout
+          </Button>
           <svg
             className='icon icon--accent icon--small'
             onClick={(e) => deleteItemHandler(id, e)}

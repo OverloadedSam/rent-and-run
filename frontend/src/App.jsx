@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Logout } from './common';
+import { Logout, RequireAuth } from './common';
 import { Footer, NavBar } from './components';
 import {
   Home,
@@ -9,6 +9,9 @@ import {
   SignUp,
   SignIn,
   Cart,
+  CouponAndDropAddress,
+  PaymentMethod,
+  PlaceRental,
 } from './screens';
 
 function App() {
@@ -20,6 +23,32 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
+          <Route path='/checkout'>
+            <Route
+              path='coupon'
+              element={
+                <RequireAuth>
+                  <CouponAndDropAddress />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path='payment'
+              element={
+                <RequireAuth>
+                  <PaymentMethod />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path='placerental'
+              element={
+                <RequireAuth>
+                  <PlaceRental />
+                </RequireAuth>
+              }
+            />
+          </Route>
           <Route path='/vehicle/:id' element={<VehicleDetails />} />
           <Route path='/vehicles' element={<Vehicles />} />
           <Route path='/cart' element={<Cart />}>
