@@ -15,12 +15,16 @@ BEGIN
     r.returning_date,
     r.rent_amount,
     ps.name AS payment_status,
-    c.discount_amount
+    c.discount_amount,
+    p.id AS payment_id,
+    p.total_amount,
+    p.transaction_update_time
   FROM
     rentals r
     JOIN vehicles v ON r.vehicle = v.id
     JOIN payment_statuses ps ON r.payment_status = ps.id
     LEFT JOIN coupons c ON r.coupon = c.id
+	  LEFT JOIN payments p ON r.id = p.rental
   WHERE
     r.user = user_id;
 END$$
