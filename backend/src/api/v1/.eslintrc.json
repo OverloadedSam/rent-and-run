@@ -28,6 +28,7 @@
             "error",
             "after"
         ],
+        "camelcase": "off",
         "comma-dangle": [
             "error",
             "only-multiline"
