@@ -7,6 +7,7 @@ const FuelType = require('./fuelType');
 const PaymentMethod = require('./paymentMethod');
 const PaymentStatus = require('./paymentStatus');
 const Coupon = require('./coupon');
+const Payment = require('./payment');
 
 module.exports = {
   User,
@@ -18,4 +19,5 @@ module.exports = {
   PaymentMethod,
   PaymentStatus,
   Coupon,
+  Payment,
 };
