@@ -15,6 +15,8 @@ const rootReducer = combineReducers({
   userLogin: userReducer.userLoginReducer,
   vehicles: vehicleReducer.vehiclesReducer,
   vehicleDetails: vehicleReducer.vehicleDetailsReducer,
+  rentals: rentalReducer.rentalsReducer,
+  rentalDetails: rentalReducer.rentalDetailsReducer,
   createRental: rentalReducer.createRentalReducer,
   cart: cartReducer.cartItemReducer,
   coupon: couponReducer.validateCouponReducer,

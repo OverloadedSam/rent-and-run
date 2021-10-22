@@ -1,6 +1,47 @@
 import { http } from '../../services';
 import { rentalTypes as actions } from '../action-types';
 
+const getRentalsList = () => async (dispatch) => {
+  dispatch({ type: actions.RENTALS_REQUESTED });
+
+  try {
+    const { data: { data } } = await http.get('/myRentals');
+    dispatch({
+      type: actions.RENTALS_SUCCEEDED,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actions.RENTALS_FAILED,
+      payload: {
+        errorMessage:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      },
+    });
+  }
+};
+
+const getRentalDetails = (payload) => async (dispatch) => {
+  dispatch({ type: actions.RENTAL_DETAILS_REQUESTED });
+
+  try {
+    const { data: { data } } = await http.get(`rental/${payload.id}`);
+    dispatch({ type: actions.RENTAL_DETAILS_SUCCEEDED, payload: data });
+  } catch (error) {
+    dispatch({
+      type: actions.RENTAL_DETAILS_FAILED,
+      payload: {
+        errorMessage:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      },
+    });
+  }
+};
+
 const createRental = (payload) => async (dispatch) => {
   dispatch({ type: actions.CREATE_RENTAL_REQUESTED });
   try {
@@ -23,4 +64,9 @@ const resetCreateRental = () => async (dispatch) => {
   dispatch({ type: actions.CREATE_RENTAL_RESET });
 };
 
-export default { createRental, resetCreateRental };
+export default {
+  getRentalsList,
+  getRentalDetails,
+  createRental,
+  resetCreateRental,
+};

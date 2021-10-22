@@ -1,5 +1,57 @@
 import { rentalTypes as actions } from '../action-types';
 
+const rentalsInitState = {
+  loading: false,
+  error: null,
+  success: false,
+  data: null,
+};
+
+const rentalsReducer = (state = rentalsInitState, action) => {
+  switch (action.type) {
+    case actions.RENTALS_REQUESTED:
+      return { ...state, loading: true };
+    case actions.RENTALS_SUCCEEDED:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        error: null,
+        data: action.payload,
+      };
+    case actions.RENTALS_FAILED:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+const rentalDetailsInitState = {
+  loading: false,
+  error: null,
+  success: false,
+  data: null,
+};
+
+const rentalDetailsReducer = (state = rentalDetailsInitState, action) => {
+  switch (action.type) {
+    case actions.RENTAL_DETAILS_REQUESTED:
+      return { ...state, loading: true };
+    case actions.RENTAL_DETAILS_SUCCEEDED:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        error: null,
+        data: action.payload,
+      };
+    case actions.RENTAL_DETAILS_FAILED:
+      return { ...state, loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 const createRentalInitState = {
   loading: false,
   error: null,
@@ -28,4 +80,4 @@ const createRentalReducer = (state = createRentalInitState, action) => {
   }
 };
 
-export default { createRentalReducer };
+export default { rentalsReducer, rentalDetailsReducer, createRentalReducer };
