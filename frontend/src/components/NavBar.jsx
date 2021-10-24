@@ -19,6 +19,11 @@ const NavBar = () => {
       icon: 'cart.svg#cart',
     },
     {
+      label: 'Rentals',
+      to: '/rentals',
+      icon: 'rental.svg#rental',
+    },
+    {
       label: 'Log out',
       to: '/logout',
       icon: 'logout.svg#logout',

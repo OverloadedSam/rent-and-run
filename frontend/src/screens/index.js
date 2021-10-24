@@ -8,6 +8,7 @@ import Cart from './Cart';
 import CouponAndDropAddress from './CouponAndDropAddress';
 import PaymentMethod from './PaymentMethod';
 import PlaceRental from './PlaceRental';
+import Rentals from './Rentals';
 
 export {
   Home,
@@ -19,4 +20,5 @@ export {
   CouponAndDropAddress,
   PaymentMethod,
   PlaceRental,
+  Rentals,
 };

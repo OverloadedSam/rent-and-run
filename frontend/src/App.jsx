@@ -12,6 +12,7 @@ import {
   CouponAndDropAddress,
   PaymentMethod,
   PlaceRental,
+  Rentals,
 } from './screens';
 
 function App() {
@@ -49,6 +50,14 @@ function App() {
               }
             />
           </Route>
+          <Route
+            path='/rentals'
+            element={
+              <RequireAuth>
+                <Rentals />
+              </RequireAuth>
+            }
+          />
           <Route path='/vehicle/:id' element={<VehicleDetails />} />
           <Route path='/vehicles' element={<Vehicles />} />
           <Route path='/cart' element={<Cart />}>

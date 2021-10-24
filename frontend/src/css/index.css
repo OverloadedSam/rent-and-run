@@ -4,6 +4,8 @@
   --color-headings: #003049;
   --color-accent: #d62828;
   --color-body: #918ca4;
+  --color-success: #3de98e;
+  --color-danger: #ef5d5d;
   --input-border-radius: 30px;
 }
 
@@ -62,6 +64,11 @@ p {
   margin-top: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @media screen and (min-width: 1024px) {
   body {
     font-size: 1.8rem;
@@ -78,6 +85,15 @@ p {
   h3 {
     font-size: 2.4rem;
   }
+}
+
+/* Overflow class */
+.overflow-x {
+  overflow-x: scroll;
+}
+
+.overflow-y {
+  overflow-y: scroll;
 }
 
 /* Badges */
@@ -147,6 +163,14 @@ p {
   fill: var(--color-accent);
 }
 
+.icon--success {
+  fill: var(--color-success);
+}
+
+.icon--headings {
+  fill: var(--color-headings);
+}
+
 .icon-container {
   align-items: center;
   background-color: #eee;
@@ -185,7 +209,6 @@ p {
   outline: 0;
   padding: 1.8rem 2rem;
   text-align: center;
-  text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -484,6 +507,10 @@ p {
   background-color: #eee;
 }
 
+.table--striped .table__header .table__row {
+  background-color: transparent;
+}
+
 /* Loader */
 .loader {
   margin: 4rem auto;
@@ -556,7 +583,7 @@ p {
 }
 
 .alert--success {
-  background-color: #3de98e;
+  background-color: var(--color-success);
 }
 
 .alert--warning {
@@ -564,7 +591,7 @@ p {
 }
 
 .alert--danger {
-  background-color: #ef5d5d;
+  background-color: var(--color-danger);
 }
 
 /* Grids */
@@ -669,7 +696,6 @@ p {
   font-size: inherit;
   font-family: inherit;
   padding: 0;
-  text-decoration: none;
   display: flex;
   align-items: center;
 }
@@ -716,8 +742,6 @@ p {
 }
 
 .dropdown__list-item a {
-  color: var(--color-body);
-  text-decoration: none;
   white-space: nowrap;
 }
 
@@ -859,7 +883,6 @@ p {
 
 .nav__item > a {
   color: #fff;
-  text-decoration: none;
   transition: color 0.3s;
 }
 
@@ -975,12 +998,6 @@ p {
 .cart-product__name {
   font-size: 2.5rem;
   margin-top: 2rem;
-}
-
-.cart-product__name a {
-  color: inherit;
-  font-size: inherit;
-  text-decoration: none;
 }
 
 .cart-product .list {
@@ -1128,7 +1145,6 @@ p {
 
 .footer a {
   color: #999;
-  text-decoration: none;
 }
 
 .footer a:hover {
@@ -1407,7 +1423,6 @@ p {
 .signup__prompt a,
 .signin__prompt a {
   color: var(--color-headings);
-  text-decoration: none;
 }
 
 .signup__response-error,
@@ -1605,6 +1620,11 @@ p {
   text-align: center;
   font-weight: bold;
   color: var(--color-accent);
+}
+
+/* Rentals */
+.rentals-table .table__header {
+  color: var(--color-primary);
 }
 
 /* Place Rental Screen / Rental Details Block */
