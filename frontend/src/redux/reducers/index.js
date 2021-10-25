@@ -3,6 +3,7 @@ import userReducer from './userReducer';
 import cartReducer from './cartReducer';
 import couponReducer from './couponReducer';
 import rentalReducer from './rentalReducer';
+import paymentReducer from './paymentReducer';
 
 export {
   vehicleReducer,
@@ -10,4 +11,5 @@ export {
   cartReducer,
   couponReducer,
   rentalReducer,
+  paymentReducer,
 };

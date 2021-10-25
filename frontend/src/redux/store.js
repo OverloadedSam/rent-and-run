@@ -7,6 +7,7 @@ import {
   vehicleReducer,
   rentalReducer,
   couponReducer,
+  paymentReducer,
 } from './reducers';
 import { auth } from '../services';
 
@@ -20,6 +21,8 @@ const rootReducer = combineReducers({
   createRental: rentalReducer.createRentalReducer,
   cart: cartReducer.cartItemReducer,
   coupon: couponReducer.validateCouponReducer,
+  createRazorpayOrder: paymentReducer.createRazorpayOrderReducer,
+  createRazorpayPayment: paymentReducer.createPaymentReducer,
 });
 
 const middleware = [thunk];

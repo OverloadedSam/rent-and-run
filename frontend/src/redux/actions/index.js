@@ -3,6 +3,7 @@ import userActions from './userActions';
 import cartActions from './cartActions';
 import couponActions from './couponActions';
 import rentalActions from './rentalActions';
+import paymentActions from './paymentActions';
 
 export {
   vehicleActions,
@@ -10,4 +11,5 @@ export {
   cartActions,
   couponActions,
   rentalActions,
+  paymentActions,
 };
