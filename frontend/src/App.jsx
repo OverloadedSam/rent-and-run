@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Logout, RequireAuth } from './common';
 import { Footer, NavBar } from './components';
 import {
@@ -19,6 +20,7 @@ function App() {
   return (
     <Router>
       <NavBar />
+      <ToastContainer />
       <main>
         <Routes>
           <Route path='/logout' element={<Logout />} />
