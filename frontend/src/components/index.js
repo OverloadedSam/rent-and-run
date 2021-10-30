@@ -9,6 +9,7 @@ import Callout from './Callout';
 import VehicleSearch from './VehicleSearch';
 import CartProduct from './CartProduct';
 import SummaryCard from './SummaryCard';
+import RazorpayButton from './RazorpayButton';
 
 export {
   NavBar,
@@ -22,4 +23,5 @@ export {
   VehicleSearch,
   CartProduct,
   SummaryCard,
+  RazorpayButton,
 };

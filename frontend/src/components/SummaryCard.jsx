@@ -8,6 +8,7 @@ const SummaryCard = (props) => {
     securityDeposit,
     couponDiscountAmount,
     placeRentalHandler,
+    renderPaymentButton,
   } = props;
   const subTotalAmount = Number(dailyRentalRate) * daysOfRental;
   const grandTotal =
@@ -66,9 +67,13 @@ const SummaryCard = (props) => {
           data={[]}
         />
         <hr />
-        <Button variant='secondary' block onClick={placeRentalHandler}>
-          Place Rental
-        </Button>
+        {renderPaymentButton ? (
+          renderPaymentButton(grandTotal)
+        ) : (
+          <Button variant='secondary' block onClick={placeRentalHandler}>
+            Place Rental
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
