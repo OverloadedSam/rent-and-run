@@ -9,6 +9,7 @@ import CouponAndDropAddress from './CouponAndDropAddress';
 import PaymentMethod from './PaymentMethod';
 import PlaceRental from './PlaceRental';
 import Rentals from './Rentals';
+import RentalDetails from './RentalDetails';
 
 export {
   Home,
@@ -21,4 +22,5 @@ export {
   PaymentMethod,
   PlaceRental,
   Rentals,
+  RentalDetails,
 };

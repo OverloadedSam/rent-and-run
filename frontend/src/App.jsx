@@ -14,6 +14,7 @@ import {
   PaymentMethod,
   PlaceRental,
   Rentals,
+  RentalDetails,
 } from './screens';
 
 function App() {
@@ -57,6 +58,14 @@ function App() {
             element={
               <RequireAuth>
                 <Rentals />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path='/rental/:id'
+            element={
+              <RequireAuth>
+                <RentalDetails />
               </RequireAuth>
             }
           />

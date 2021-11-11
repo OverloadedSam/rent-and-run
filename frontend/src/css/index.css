@@ -1634,6 +1634,11 @@ a {
 
 /* Rental details */
 .block-rental-details .block__header {
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+.step-counter + .block__header {
   margin-top: 3rem;
   margin-bottom: 0;
 }
