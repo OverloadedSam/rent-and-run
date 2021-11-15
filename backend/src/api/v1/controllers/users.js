@@ -73,7 +73,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // @route   PUT /api/v1/me/
 // @access  Protected
-// @desc    Register user in DB.
+// @desc    Update user info in DB.
 const updateUser = asyncHandler(async (req, res) => {
   const userData = { ...req.body };
   const userId = req.user.id;
