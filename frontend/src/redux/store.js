@@ -14,6 +14,8 @@ import { auth } from '../services';
 const rootReducer = combineReducers({
   userRegister: userReducer.userRegisterReducer,
   userLogin: userReducer.userLoginReducer,
+  user: userReducer.userDetailsReducer,
+  userUpdate: userReducer.userUpdateReducer,
   vehicles: vehicleReducer.vehiclesReducer,
   vehicleDetails: vehicleReducer.vehicleDetailsReducer,
   rentals: rentalReducer.rentalsReducer,
