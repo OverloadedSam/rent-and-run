@@ -15,6 +15,7 @@ import {
   PlaceRental,
   Rentals,
   RentalDetails,
+  MyProfile,
 } from './screens';
 
 function App() {
@@ -25,6 +26,14 @@ function App() {
       <main>
         <Routes>
           <Route path='/logout' element={<Logout />} />
+          <Route
+            path='/profile'
+            element={
+              <RequireAuth>
+                <MyProfile />
+              </RequireAuth>
+            }
+          />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/checkout'>

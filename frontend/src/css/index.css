@@ -438,6 +438,11 @@ a {
   font-size: 1.5rem;
 }
 
+.input[disabled] {
+  opacity: 0.7;
+  cursor: no-drop;
+}
+
 .input-group {
   border: 1px solid var(--color-headings);
   border-radius: var(--input-border-radius);
@@ -1349,7 +1354,8 @@ a {
 
 /* Sign UP and Sign In  */
 .signup,
-.signin {
+.signin,
+.profile {
   max-width: 600px;
   box-shadow: 0 0 10px var(--color-body);
   padding: 1rem 3rem;
@@ -1358,7 +1364,8 @@ a {
 }
 
 .signup__logo,
-.signin__logo {
+.signin__logo,
+.profile__logo {
   width: 100px;
   display: block;
   margin: 0 auto;
@@ -1373,8 +1380,13 @@ a {
   stroke: var(--color-primary);
 }
 
+.profile__logo {
+  stroke: var(--color-primary);
+}
+
 .signup__heading,
-.signin__heading {
+.signin__heading,
+.profile__heading {
   margin: 3rem 0 4rem 0;
   padding-left: 2rem;
   text-transform: uppercase;
@@ -1388,28 +1400,37 @@ a {
   border-left: 1rem solid var(--color-primary);
 }
 
-.signup__name-container {
+.profile__heading {
+  border-left: 1rem solid var(--color-primary);
+}
+
+.signup__name-container,
+.profile__name-container {
   justify-self: flex-start;
   width: 100%;
 }
 
 .signup .label,
-.signin .label {
+.signin .label,
+.profile .label {
   margin-left: 1rem;
 }
 
 .signup .input-error,
-.signin .input-error {
+.signin .input-error,
+.profile .input-error {
   padding: 0.5rem 0 0.5rem 1rem;
 }
 
 .signup .input-group,
-.signin .input-group {
+.signin .input-group,
+.profile .input-group {
   margin-bottom: 3rem;
 }
 
 .signup__password-toggler .icon,
-.signin__password-toggler .icon {
+.signin__password-toggler .icon,
+.profile__password-toggler .icon {
   cursor: pointer;
 }
 
@@ -1434,7 +1455,8 @@ a {
 
 @media screen and (min-width: 768px) {
   .signup,
-  .signin {
+  .signin,
+  .profile {
     margin: 5rem auto;
     padding: 1rem 5rem;
   }

@@ -10,6 +10,7 @@ import PaymentMethod from './PaymentMethod';
 import PlaceRental from './PlaceRental';
 import Rentals from './Rentals';
 import RentalDetails from './RentalDetails';
+import MyProfile from './MyProfile';
 
 export {
   Home,
@@ -23,4 +24,5 @@ export {
   PlaceRental,
   Rentals,
   RentalDetails,
+  MyProfile,
 };
