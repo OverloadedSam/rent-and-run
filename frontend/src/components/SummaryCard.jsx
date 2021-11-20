@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Table } from '../common';
+import { Card, Table } from '../common';
 
 const SummaryCard = (props) => {
   const {
@@ -7,8 +7,7 @@ const SummaryCard = (props) => {
     daysOfRental,
     securityDeposit,
     couponDiscountAmount,
-    placeRentalHandler,
-    renderPaymentButton,
+    renderButton,
   } = props;
   const subTotalAmount = Number(dailyRentalRate) * daysOfRental;
   const grandTotal =
@@ -67,13 +66,7 @@ const SummaryCard = (props) => {
           data={[]}
         />
         <hr />
-        {renderPaymentButton ? (
-          renderPaymentButton(grandTotal)
-        ) : (
-          <Button variant='secondary' block onClick={placeRentalHandler}>
-            Place Rental
-          </Button>
-        )}
+        {renderButton ? renderButton(props) : null}
       </Card.Body>
     </Card>
   );

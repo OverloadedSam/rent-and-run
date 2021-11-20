@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   vehicleActions,
   cartActions,
@@ -14,6 +15,7 @@ import {
   Grid,
   Table,
   Alert,
+  Button,
 } from '../common';
 import { SummaryCard } from '../components';
 import { dateTime } from '../utils';
@@ -109,9 +111,15 @@ const PlaceRental = () => {
 
   useEffect(() => {
     if (isRentalPlaced) {
+      toast('Rental placed!');
       navigate(`/rental/${rentalDetails.id}`, { replace: true });
       dispatch(action.resetCreateRental());
       dispatch(cartActions.deleteItemFromCart({ id }));
+    }
+
+    if (rentalError) {
+      toast.error(rentalError.errorMessage);
+      dispatch(action.resetCreateRental());
     }
   }, [rentalError, isRentalPlaced]);
 
@@ -168,7 +176,11 @@ const PlaceRental = () => {
             daysOfRental={numberOfDays}
             securityDeposit={vehicle.security_amount}
             couponDiscountAmount={discount_amount}
-            placeRentalHandler={handlePlaceRental}
+            renderButton={() => (
+              <Button variant='secondary' block onClick={handlePlaceRental}>
+                Place Rental
+              </Button>
+            )}
           />
         </Grid>
       ) : null}

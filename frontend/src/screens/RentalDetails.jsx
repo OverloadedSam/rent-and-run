@@ -168,7 +168,7 @@ const RentalDetails = () => {
             daysOfRental={numberOfDays}
             securityDeposit={vehicle_security_amount}
             couponDiscountAmount={discount_amount}
-            renderPaymentButton={(amount) => {
+            renderButton={({ amount }) => {
               if (!/succeeded/gi.test(payment_status)) {
                 return <RazorpayButton amountInInr={amount} />;
               }
