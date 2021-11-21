@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `rent_and_run`.`rentals` (
   `vehicle` VARCHAR(36) NOT NULL,
   `booking_date` DATETIME NOT NULL,
   `returning_date` DATETIME NOT NULL,
+  `rental_completion_date` DATETIME NULL DEFAULT NULL,
   `drop_address` VARCHAR(256) NOT NULL,
   `rent_amount` DECIMAL(9, 2) NOT NULL,
   `payment_method` TINYINT NOT NULL,
