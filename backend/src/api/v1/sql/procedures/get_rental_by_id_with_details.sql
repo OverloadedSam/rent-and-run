@@ -15,6 +15,7 @@ BEGIN
         v.security_amount AS vehicle_security_amount,
         r.booking_date,
         r.returning_date,
+        r.rental_completion_date,
         r.drop_address,
         r.rent_amount,
         pm.name AS payment_method,
