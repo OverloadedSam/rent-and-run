@@ -19,6 +19,14 @@ class Rental {
     return db.query(query, [this.rental]);
   }
 
+  // Update rental by specifying rental id.
+  async updateRental(rentalId) {
+    const query = `UPDATE rentals SET ? WHERE id = ?`;
+
+    this.rental.id = rentalId;
+    return db.query(query, [this.rental, this.rental.id]);
+  }
+
   // Apply/update coupon of a rental.
   async applyCoupon(couponId, userId) {
     const query = `
