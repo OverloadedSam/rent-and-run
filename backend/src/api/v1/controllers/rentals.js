@@ -179,6 +179,56 @@ const removeRental = asyncHandler(async (req, res, next) => {
   });
 });
 
+// @route   POST /api/v1/completeRental/:rental_id
+// @access  Protected/Admin
+// @desc    Make rental as completed by saving rental completion time in DB.
+const completeRental = asyncHandler(async (req, res, next) => {
+  const rentalId = req.params.rental_id;
+  const { user } = req;
+
+  const [[rentalData]] = await Rental.getRentalById(rentalId);
+
+  if (!rentalData[0]) {
+    const message = `Rental with id ${rentalId} not found!`;
+    return next(new ErrorResponse(404, message));
+  }
+
+  if (user.id !== rentalData[0].user || user.role !== 2) {
+    return next(new ErrorResponse(403, 'This rental does not belong to you!'));
+  }
+
+  if (!/succeeded/gi.test(rentalData[0].payment_status)) {
+    return next(new ErrorResponse(400, 'Pay for the rental first!'));
+  }
+
+  const todayDateTime = new Date();
+  if (todayDateTime <= new Date(rentalData[0].booking_date)) {
+    const message =
+      'Can not complete rental before booking date. Try contacting support!';
+    return next(new ErrorResponse(400, message));
+  }
+
+  rentalData[0].rental_completion_time = todayDateTime;
+  const rental = new Rental({
+    id: rentalData[0].id,
+    rental_completion_date: todayDateTime,
+  });
+  const [result] = await rental.updateRental(rentalData[0].id);
+
+  if (result.affectedRows === 0) {
+    const message = 'Unable to complete rental. Something went wrong!';
+    return next(new ErrorResponse(500, message));
+  }
+
+  res.status(200).json({
+    success: true,
+    status: 200,
+    data: {
+      message: `Rental completed on ${todayDateTime.toString().slice(0, 21)}`,
+    },
+  });
+});
+
 module.exports = {
   getRentals,
   getUserRentals,
@@ -186,4 +236,5 @@ module.exports = {
   createRental,
   applyCoupon,
   removeRental,
+  completeRental,
 };
