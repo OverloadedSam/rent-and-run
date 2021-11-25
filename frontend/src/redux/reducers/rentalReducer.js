@@ -80,4 +80,37 @@ const createRentalReducer = (state = createRentalInitState, action) => {
   }
 };
 
-export default { rentalsReducer, rentalDetailsReducer, createRentalReducer };
+const completeRentalInitState = {
+  loading: false,
+  error: null,
+  success: false,
+  data: null,
+};
+
+const completeRentalReducer = (state = completeRentalInitState, action) => {
+  switch (action.type) {
+    case actions.COMPLETE_RENTAL_REQUESTED:
+      return { ...state, loading: true };
+    case actions.COMPLETE_RENTAL_SUCCEEDED:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        error: null,
+        data: action.payload,
+      };
+    case actions.COMPLETE_RENTAL_FAILED:
+      return { ...state, loading: false, error: action.payload };
+    case actions.COMPLETE_RENTAL_RESET:
+      return { ...completeRentalInitState };
+    default:
+      return state;
+  }
+};
+
+export default {
+  rentalsReducer,
+  rentalDetailsReducer,
+  createRentalReducer,
+  completeRentalReducer,
+};

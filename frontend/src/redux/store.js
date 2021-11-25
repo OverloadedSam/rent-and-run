@@ -21,6 +21,7 @@ const rootReducer = combineReducers({
   rentals: rentalReducer.rentalsReducer,
   rentalDetails: rentalReducer.rentalDetailsReducer,
   createRental: rentalReducer.createRentalReducer,
+  completeRental: rentalReducer.completeRentalReducer,
   cart: cartReducer.cartItemReducer,
   coupon: couponReducer.validateCouponReducer,
   createRazorpayOrder: paymentReducer.createRazorpayOrderReducer,

@@ -11,6 +11,11 @@ const RENTAL_DETAILS_REQUESTED = 'rentalDetailsRequested';
 const RENTAL_DETAILS_SUCCEEDED = 'rentalDetailsSucceeded';
 const RENTAL_DETAILS_FAILED = 'rentalDetailFailed';
 
+const COMPLETE_RENTAL_REQUESTED = 'completeRentalRequested';
+const COMPLETE_RENTAL_SUCCEEDED = 'completeRentalSucceeded';
+const COMPLETE_RENTAL_FAILED = 'completeRentalFailed';
+const COMPLETE_RENTAL_RESET = 'completeRentalReset';
+
 export default {
   RENTALS_REQUESTED,
   RENTALS_SUCCEEDED,
@@ -22,4 +27,8 @@ export default {
   RENTAL_DETAILS_REQUESTED,
   RENTAL_DETAILS_SUCCEEDED,
   RENTAL_DETAILS_FAILED,
+  COMPLETE_RENTAL_REQUESTED,
+  COMPLETE_RENTAL_SUCCEEDED,
+  COMPLETE_RENTAL_FAILED,
+  COMPLETE_RENTAL_RESET,
 };
