@@ -1,8 +1,17 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { rentalActions as action } from '../redux/actions';
-import { Container, Loader, Error, Grid, Table, Alert } from '../common';
+import {
+  Container,
+  Loader,
+  Error,
+  Grid,
+  Table,
+  Alert,
+  Button,
+} from '../common';
 import { RazorpayButton, SummaryCard } from '../components';
 import { dateTime } from '../utils';
 
@@ -15,6 +24,11 @@ const RentalDetails = () => {
     success,
     data: rental,
   } = useSelector((state) => state.rentalDetails);
+  const {
+    loading: completeRentalLoading,
+    error: completeRentalFailed,
+    success: completeRentalSuccess,
+  } = useSelector((state) => state.completeRental);
 
   const {
     id,
@@ -24,6 +38,7 @@ const RentalDetails = () => {
     vehicle_security_amount,
     booking_date,
     returning_date,
+    rental_completion_date,
     coupon_code,
     discount_amount,
     drop_address,
@@ -86,6 +101,23 @@ const RentalDetails = () => {
         key: 'Drop Location',
         value: drop_address || 'N/A',
       },
+      {
+        id: '8',
+        key: 'Completion Status',
+        value: rental_completion_date ? (
+          <span title='Rental is completed'>
+            <svg className='icon icon--small icon--success'>
+              <use href='/assets/icons/check.svg#check' />
+            </svg>
+          </span>
+        ) : (
+          <span title='Rental is not completed'>
+            <svg className='icon icon--small icon--accent'>
+              <use href='/assets/icons/cross.svg#cross' />
+            </svg>
+          </span>
+        ),
+      },
     ],
     [rental]
   );
@@ -123,6 +155,18 @@ const RentalDetails = () => {
   useEffect(() => {
     dispatch(action.getRentalDetails({ id: params.id }));
   }, []);
+
+  useEffect(() => {
+    if (completeRentalSuccess) {
+      toast.success('This rental is now completed!');
+      dispatch(action.getRentalDetails({ id }));
+      dispatch(action.resetCompleteRental());
+    }
+
+    if (completeRentalFailed) {
+      toast.error(completeRentalFailed.errorMessage);
+    }
+  }, [completeRentalSuccess, completeRentalFailed]);
 
   return (
     <Container className='block block-rental-details'>
@@ -172,7 +216,25 @@ const RentalDetails = () => {
               if (!/succeeded/gi.test(payment_status)) {
                 return <RazorpayButton amountInInr={amount} />;
               }
-              return null; // Render nothing if payment is succeeded.
+
+              const todayDateTime = new Date();
+              if (
+                todayDateTime > new Date(booking_date) &&
+                !rental_completion_date
+              ) {
+                return (
+                  <Button
+                    variant='accent'
+                    title='Complete rental'
+                    block
+                    disabled={completeRentalLoading}
+                    onClick={() => dispatch(action.completeRental({ id }))}
+                  >
+                    Return Vehicle
+                  </Button>
+                );
+              }
+              return null; // Render nothing if payment is succeeded and rental is completed.
             }}
           />
         </Grid>
