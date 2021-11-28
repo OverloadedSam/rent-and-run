@@ -16,6 +16,7 @@ import {
   Rentals,
   RentalDetails,
   MyProfile,
+  About,
 } from './screens';
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
           <Route path='/cart' element={<Cart />}>
             <Route path=':vehicleId' element={<Cart />} />
           </Route>
+          <Route path='/about' element={<About />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </main>

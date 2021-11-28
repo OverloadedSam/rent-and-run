@@ -8,6 +8,7 @@ import Testimonial from './Testimonial';
 import Callout from './Callout';
 import VehicleSearch from './VehicleSearch';
 import CartProduct from './CartProduct';
+import TeamMemberCard from './TeamMemberCard';
 import SummaryCard from './SummaryCard';
 import RazorpayButton from './RazorpayButton';
 
@@ -22,6 +23,7 @@ export {
   Callout,
   VehicleSearch,
   CartProduct,
+  TeamMemberCard,
   SummaryCard,
   RazorpayButton,
 };

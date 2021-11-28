@@ -11,6 +11,7 @@ import PlaceRental from './PlaceRental';
 import Rentals from './Rentals';
 import RentalDetails from './RentalDetails';
 import MyProfile from './MyProfile';
+import About from './About';
 
 export {
   Home,
@@ -25,4 +26,5 @@ export {
   Rentals,
   RentalDetails,
   MyProfile,
+  About,
 };
