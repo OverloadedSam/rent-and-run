@@ -24,7 +24,7 @@ const Showcase = () => (
           <Media>
             <Media.Image>
               <svg className='icon icon--primary'>
-                <use href='/assets/icons/crown.svg#crown' />
+                <use href='/assets/icons/sprite.svg#crown' />
               </svg>
             </Media.Image>
 
@@ -41,7 +41,7 @@ const Showcase = () => (
           <Media>
             <Media.Image>
               <svg className='icon icon--primary'>
-                <use href='/assets/icons/card.svg#card' />
+                <use href='/assets/icons/sprite.svg#card' />
               </svg>
             </Media.Image>
 
@@ -58,7 +58,7 @@ const Showcase = () => (
           <Media>
             <Media.Image>
               <svg className='icon icon--primary'>
-                <use href='/assets/icons/coupon.svg#coupon' />
+                <use href='/assets/icons/sprite.svg#coupon' />
               </svg>
             </Media.Image>
 

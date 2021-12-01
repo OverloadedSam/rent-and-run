@@ -7,7 +7,9 @@ const Quote = ({ ...props }) => (
     <p className='quote__text'>{props.children}</p>
     <Media>
       <Media.Image className='quote__image'>
-        <img className='icon quote__line' src='/assets/icons/line.svg' alt='' />
+        <svg className='icon icon--primary'>
+          <use href='/assets/icons/sprite.svg#line' />
+        </svg>
       </Media.Image>
       <Media.Body>
         <Media.Title className='quote__author'>{props.author}</Media.Title>

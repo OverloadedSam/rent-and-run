@@ -107,13 +107,13 @@ const RentalDetails = () => {
         value: rental_completion_date ? (
           <span title='Rental is completed'>
             <svg className='icon icon--small icon--success'>
-              <use href='/assets/icons/check.svg#check' />
+              <use href='/assets/icons/sprite.svg#check' />
             </svg>
           </span>
         ) : (
           <span title='Rental is not completed'>
             <svg className='icon icon--small icon--accent'>
-              <use href='/assets/icons/cross.svg#cross' />
+              <use href='/assets/icons/sprite.svg#cross' />
             </svg>
           </span>
         ),

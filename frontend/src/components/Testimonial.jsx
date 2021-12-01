@@ -15,7 +15,7 @@ const Testimonial = () => (
             <img src='/assets/testimonial.jpg' alt='customer' />
             <span className='icon-container icon-container--accent'>
               <svg className='icon'>
-                <use href='/assets/icons/quotes.svg#quote' />
+                <use href='/assets/icons/sprite.svg#quotes' />
               </svg>
             </span>
           </div>

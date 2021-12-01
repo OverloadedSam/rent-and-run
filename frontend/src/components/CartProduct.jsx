@@ -57,7 +57,7 @@ const CartProduct = ({ ...props }) => {
             className='icon icon--accent icon--small'
             onClick={(e) => deleteItemHandler(id, e)}
           >
-            <use href='/assets/icons/delete.svg#delete' />
+            <use href='/assets/icons/sprite.svg#delete' />
           </svg>
         </div>
       </Card.Body>

@@ -49,8 +49,8 @@ class SignIn extends Form {
     if (isLoggedIn) return <Navigate to='/' />;
 
     const iconPath = showPassword
-      ? '/assets/icons/eye-close.svg#eye-close'
-      : '/assets/icons/eye.svg#eye';
+      ? '/assets/icons/sprite.svg#eye-close'
+      : '/assets/icons/sprite.svg#eye';
 
     const emailInput = {
       id: 'email',
@@ -63,7 +63,7 @@ class SignIn extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/email.svg#email' />
+              <use href='/assets/icons/sprite.svg#email' />
             </svg>
           </div>
         ),
@@ -80,7 +80,7 @@ class SignIn extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/lock.svg#lock' />
+              <use href='/assets/icons/sprite.svg#lock' />
             </svg>
           </div>
         ),
@@ -108,7 +108,7 @@ class SignIn extends Form {
       <Container>
         <form className='signin'>
           <svg className='signin__logo'>
-            <use href='/assets/icons/user.svg#user' />
+            <use href='/assets/icons/sprite.svg#user' />
           </svg>
           <h2 className='signin__heading'>SIGN IN</h2>
           {responseError && (

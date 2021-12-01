@@ -19,12 +19,11 @@ const Collapsible = ({ ...props }) => {
     >
       <div className='collapsible__header'>
         <h2 className='collapsible__heading'>{heading}</h2>
-        <img
-          onClick={handleToggle}
-          className='icon collapsible__toggler'
-          src='/assets/icons/chevron.svg'
-          alt=''
-        />
+        <div>
+          <svg className='icon collapsible__toggler' onClick={handleToggle}>
+            <use href='/assets/icons/sprite.svg#chevron' />
+          </svg>
+        </div>
       </div>
       <div className='collapsible__content'>{children}</div>
     </div>

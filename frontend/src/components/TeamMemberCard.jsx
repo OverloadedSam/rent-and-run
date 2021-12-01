@@ -19,17 +19,17 @@ const TeamMemberCard = (props) => {
         <div className='team-member__socials'>
           <a href={socials.facebook} target='_blank' rel='noreferrer'>
             <svg className='icon icon--secondary'>
-              <use href='/assets/icons/facebook.svg#facebook' />
+              <use href='/assets/icons/sprite.svg#facebook' />
             </svg>
           </a>
           <a href={socials.twitter} target='_blank' rel='noreferrer'>
             <svg className='icon icon--secondary'>
-              <use href='/assets/icons/twitter.svg#twitter' />
+              <use href='/assets/icons/sprite.svg#twitter' />
             </svg>
           </a>
           <a href={socials.instagram} target='_blank' rel='noreferrer'>
             <svg className='icon icon--secondary'>
-              <use href='/assets/icons/instagram.svg#instagram' />
+              <use href='/assets/icons/sprite.svg#instagram' />
             </svg>
           </a>
         </div>

@@ -88,7 +88,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/car-average.svg#car-average' />
+                          <use href='/assets/icons/sprite.svg#car-average' />
                         </svg>
                       </Media.Image>
                       <Media.Body>
@@ -103,7 +103,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/seat.svg#seat' />
+                          <use href='/assets/icons/sprite.svg#seat' />
                         </svg>
                       </Media.Image>
                       <Media.Body>
@@ -116,7 +116,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/speedometer.svg#speedometer' />
+                          <use href='/assets/icons/sprite.svg#speedometer' />
                         </svg>
                       </Media.Image>
                       <Media.Body>
@@ -131,7 +131,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/fuel.svg#fuel' />
+                          <use href='/assets/icons/sprite.svg#fuel' />
                         </svg>
                       </Media.Image>
                       <Media.Body>
@@ -146,7 +146,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/power.svg#power' />
+                          <use href='/assets/icons/sprite.svg#power' />
                         </svg>
                       </Media.Image>
                       <Media.Body>
@@ -161,7 +161,7 @@ const VehicleDetails = () => {
                     <Media>
                       <Media.Image className='icon-container'>
                         <svg className='icon icon--secondary'>
-                          <use href='/assets/icons/security-deposit.svg#security-deposit' />
+                          <use href='/assets/icons/sprite.svg#security-deposit' />
                         </svg>
                       </Media.Image>
                       <Media.Body>

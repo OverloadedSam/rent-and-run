@@ -6,7 +6,7 @@ const Features = () => {
     {
       heading: 'Jaw Dropping Rates',
       text: 'Book car and bikes on rent in Delhi. We have the best daily rental rates. Our two wheeler vehicles start at just ₹ 500 /day.',
-      icon: '/assets/icons/money.svg#money',
+      icon: '/assets/icons/sprite.svg#money',
       image: {
         webp: ['/assets/images/rates.webp', '/assets/images/rates@2x.webp'],
         default: ['/assets/images/rates.jpg', '/assets/images/rates@2x.jpg'],
@@ -15,7 +15,7 @@ const Features = () => {
     {
       heading: 'Easy To Use',
       text: 'Renting made easy with Rent & Run. We design the application by keeping users in focus all the time. Every age of people can easily operate Rent & Run and can rent vehicles of their choices.',
-      icon: '/assets/icons/easy.svg#easy',
+      icon: '/assets/icons/sprite.svg#easy',
       image: {
         webp: ['/assets/images/easy.webp', '/assets/images/easy@2x.webp'],
         default: ['/assets/images/easy.jpg', '/assets/images/easy@2x.jpg'],
@@ -24,7 +24,7 @@ const Features = () => {
     {
       heading: 'Drop Anywhere',
       text: 'After you finished with your trip, You can choose a drop location in Delhi from where we can pick our vehicle and you do not need to worry about dropping vehicle at our place.',
-      icon: '/assets/icons/handover.svg#handover',
+      icon: '/assets/icons/sprite.svg#handover',
       image: {
         webp: [
           '/assets/images/handover.webp',
@@ -39,7 +39,7 @@ const Features = () => {
     {
       heading: '24x7 Support',
       text: 'We never let down any customer. We see our customers as invited guests to a party, and we are the hosts. It is our job to make the customer experience a little bit better.',
-      icon: '/assets/icons/support.svg#support',
+      icon: '/assets/icons/sprite.svg#support',
       image: {
         webp: ['/assets/images/support.webp', '/assets/images/support@2x.webp'],
         default: [

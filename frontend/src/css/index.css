@@ -398,6 +398,10 @@ a {
   align-self: center;
 }
 
+.testimonial .quote__image {
+  margin: 0;
+}
+
 .testimonial .media__description {
   color: var(--color-primary);
 }

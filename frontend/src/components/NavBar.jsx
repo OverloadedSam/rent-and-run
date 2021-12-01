@@ -11,22 +11,22 @@ const NavBar = () => {
     {
       label: 'My Profile',
       to: '/profile',
-      icon: 'profile.svg#user',
+      icon: 'sprite.svg#man',
     },
     {
       label: 'Cart',
       to: '/cart',
-      icon: 'cart.svg#cart',
+      icon: 'sprite.svg#cart',
     },
     {
       label: 'Rentals',
       to: '/rentals',
-      icon: 'rental.svg#rental',
+      icon: 'sprite.svg#rental',
     },
     {
       label: 'Log out',
       to: '/logout',
-      icon: 'logout.svg#logout',
+      icon: 'sprite.svg#logout',
     },
   ];
 

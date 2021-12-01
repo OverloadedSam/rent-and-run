@@ -45,7 +45,7 @@ const Dropdown = ({ ...props }) => {
       >
         {label}
         <svg className='icon'>
-          <use href='/assets/icons/triangle.svg#triangle' />
+          <use href='/assets/icons/sprite.svg#triangle' />
         </svg>
       </button>
 

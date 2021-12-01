@@ -128,11 +128,11 @@ class MyProfile extends Form {
     const { loading, error, success } = this.props.user;
     const { editProfileMode, show } = this.state;
     const passwordIcon = show.password
-      ? '/assets/icons/eye-close.svg#eye-close'
-      : '/assets/icons/eye.svg#eye';
+      ? '/assets/icons/sprite.svg#eye-close'
+      : '/assets/icons/sprite.svg#eye';
     const confirmPasswordIcon = show.confirm_password
-      ? '/assets/icons/eye-close.svg#eye-close'
-      : '/assets/icons/eye.svg#eye';
+      ? '/assets/icons/sprite.svg#eye-close'
+      : '/assets/icons/sprite.svg#eye';
 
     const firstNameInput = {
       id: 'first_name',
@@ -158,7 +158,7 @@ class MyProfile extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/email.svg#email' />
+              <use href='/assets/icons/sprite.svg#email' />
             </svg>
           </div>
         ),
@@ -174,7 +174,7 @@ class MyProfile extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/phone.svg#phone' />
+              <use href='/assets/icons/sprite.svg#phone' />
             </svg>
           </div>
         ),
@@ -191,7 +191,7 @@ class MyProfile extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/lock.svg#lock' />
+              <use href='/assets/icons/sprite.svg#lock' />
             </svg>
           </div>
         ),
@@ -219,7 +219,7 @@ class MyProfile extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/lock.svg#lock' />
+              <use href='/assets/icons/sprite.svg#lock' />
             </svg>
           </div>
         ),
@@ -264,7 +264,7 @@ class MyProfile extends Form {
       <Container>
         <form className='profile'>
           <svg className='profile__logo icon--primary'>
-            <use href='/assets/icons/profile.svg#user' />
+            <use href='/assets/icons/sprite.svg#user' />
           </svg>
           <h2 className='profile__heading'>My Profile</h2>
 

@@ -64,7 +64,7 @@ const Rentals = () => {
             >
               <use
                 href={`/assets/icons/${
-                  isPaid ? 'check.svg#check' : 'cross.svg#cross'
+                  isPaid ? 'sprite.svg#check' : 'sprite.svg#cross'
                 }`}
               />
             </svg>
@@ -79,7 +79,7 @@ const Rentals = () => {
         (item) => (
           <Link title='More details' to={`/rental/${item.id}`}>
             <svg className='icon icon--headings'>
-              <use href='/assets/icons/info.svg#info' />
+              <use href='/assets/icons/sprite.svg#info' />
             </svg>
           </Link>
         ),

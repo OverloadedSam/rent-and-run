@@ -88,11 +88,11 @@ class SignUp extends Form {
     if (this.props.isLoggedIn) return <Navigate to='/' />;
 
     const passwordIcon = show.password
-      ? '/assets/icons/eye-close.svg#eye-close'
-      : '/assets/icons/eye.svg#eye';
+      ? '/assets/icons/sprite.svg#eye-close'
+      : '/assets/icons/sprite.svg#eye';
     const confirmPasswordIcon = show.confirm_password
-      ? '/assets/icons/eye-close.svg#eye-close'
-      : '/assets/icons/eye.svg#eye';
+      ? '/assets/icons/sprite.svg#eye-close'
+      : '/assets/icons/sprite.svg#eye';
 
     const firstNameInput = {
       id: 'first_name',
@@ -115,7 +115,7 @@ class SignUp extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--accent'>
-              <use href='/assets/icons/email.svg#email' />
+              <use href='/assets/icons/sprite.svg#email' />
             </svg>
           </div>
         ),
@@ -130,7 +130,7 @@ class SignUp extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--accent'>
-              <use href='/assets/icons/phone.svg#phone' />
+              <use href='/assets/icons/sprite.svg#phone' />
             </svg>
           </div>
         ),
@@ -146,7 +146,7 @@ class SignUp extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--accent'>
-              <use href='/assets/icons/lock.svg#lock' />
+              <use href='/assets/icons/sprite.svg#lock' />
             </svg>
           </div>
         ),
@@ -173,7 +173,7 @@ class SignUp extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--accent'>
-              <use href='/assets/icons/lock.svg#lock' />
+              <use href='/assets/icons/sprite.svg#lock' />
             </svg>
           </div>
         ),
@@ -204,7 +204,7 @@ class SignUp extends Form {
       <Container>
         <form className='signup'>
           <svg className='signup__logo'>
-            <use href='/assets/icons/register.svg#register' />
+            <use href='/assets/icons/sprite.svg#register' />
           </svg>
           <h2 className='signup__heading'>SIGN UP</h2>
           {responseError && (

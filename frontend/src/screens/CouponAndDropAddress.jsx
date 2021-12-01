@@ -73,7 +73,7 @@ export class CouponAndDropAddress extends Form {
         left: (
           <div className='input-group__icon'>
             <svg className='icon icon--primary'>
-              <use href='/assets/icons/coupon.svg#coupon' />
+              <use href='/assets/icons/sprite.svg#coupon' />
             </svg>
           </div>
         ),
